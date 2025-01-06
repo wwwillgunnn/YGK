@@ -1,12 +1,11 @@
-// TODO: have members fade in one at a time from bottom to top
-
 import Image from "next/image";
+import FadeInStagger from "@/components/animations/FadeInStagger";
 
 export default function Team() {
   return (
     <section className="height-[100vh] pt-20 flex flex-col gap-20 text-center">
-        <h2 className="lg:text-6xl z-10 bg-[#0a0a0a]">Meet Our Team</h2>
-        <div className="flex flex-row gap-20">
+        <h2 className="text-6xl font-bold z-10 bg-[#0a0a0a]">Meet Our Team</h2>
+        <FadeInStagger duration={1} delay={0.3}>
             <figure>
                 <Image src="/notion-avatar-will.svg" alt="Will" width={350} height={400} />
                 <figcaption>
@@ -27,10 +26,9 @@ export default function Team() {
                     <p className="lg:text-xl">Lester</p>
                 </figcaption>
             </figure>
-        </div>
-        <blockquote>
+        </FadeInStagger>
+        <blockquote className="text-base mx-5">
             hands in the dirt, head in the sun, heart with nature. To nurture a garden is to feed not just the body, but the soul.
-            <br />– Alfred Austin
         </blockquote>
     </section>
   )

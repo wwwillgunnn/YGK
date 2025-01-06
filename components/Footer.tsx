@@ -5,7 +5,7 @@ import Link from "next/link"
 export default function Footer() {
   return (
     <footer className="my-20 mx-16">
-      <div className="flex flex-col gap-8 lg:flex-row justify-between w-full">
+      <div className="flex sm:flex-row flex-col gap-8 justify-between w-full">
         <div className="flex flex-col gap-8">
           <div className="flex flex-row gap-4 items-center">
           <Image src="/vercel.svg" alt="logo" width={60} height={60} />
@@ -13,13 +13,17 @@ export default function Footer() {
         </div>
         <form>
           <h6 className="footer-title">Stay updated with us!</h6>
+          {/* Not really responsive on mobile */}
           <fieldset className="form-control">
-            <div className="join flex flex-col sm:flex-row w-full gap-4 sm:gap-0">
+            <div className="join flex flex-row w-full items-center justify-center sm:items-start sm:justify-start">
               <input
                 type="text"
                 placeholder="username@site.com"
-                className="input w-full bg-transparent placeholder-[#E0E0E0] border border-1 join-item" />
-              <button className="btn bg-transparent border border-1 border-white">Subscribe</button>
+                className="input w-full sm:w-[20rem] bg-transparent placeholder-[#E0E0E0] border border-gray-300 rounded-l-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              />
+              <button className="btn bg-transparent border border-gray-300 rounded-r-md p-3 text-white hover:bg-blue-500 hover:border-blue-500 transition duration-300">
+                Subscribe
+              </button>
             </div>
           </fieldset>
         </form>
