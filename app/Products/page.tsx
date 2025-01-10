@@ -17,8 +17,8 @@ export default function Products() {
   return (
     <main>
       <Navbar />
-      <section className="flex flex-col lg:flex-row items-center justify-center gap-20 pb-10 my-20">
-        <figcaption className="flex flex-col gap-5 mr-20">
+      <section className="flex flex-col lg:flex-row items-center justify-center gap-20 lg:gap-[120px] pb-10 my-20">
+        <figcaption className="flex flex-col gap-5">
           {/* Text list of products with click events */}
           {["Curry Paste", "Chilli Paste", "Sour Dough", "Pumpkin Bread", "Bread Roll", "Jollof Rice"].map((product) => (
             <div key={product}>
@@ -39,30 +39,30 @@ export default function Products() {
         </figcaption>
 
         {/* Dynamic rendering of images based on selected product */}
-        <figure className="relative ml-20">
+        <figure className="relative">
           {selectedProduct === "Curry Paste" && (
-            <figure className="w-[30vw] h-[70vh] z-10">
+            <figure className="w-[80vw] lg:w-[30vw] h-[70vh] z-10">
               <Jar />
             </figure>
           )}
           {selectedProduct === "Chilli Paste" && (
-            <div className="bg-gray-400 w-[30vw] h-[70vh] border border-gray-700 rounded-md z-10"></div>
+            <div className="bg-gray-400 w-[80vw] lg:w-[30vw] h-[70vh] border border-gray-700 rounded-md z-10"></div>
           )}
           {selectedProduct === "Sour Dough" && (
-            <div className="bg-gray-500 w-[30vw] h-[70vh] border border-gray-700 rounded-md z-10"></div>
+            <div className="bg-gray-500 w-[80vw] lg:w-[30vw] h-[70vh] border border-gray-700 rounded-md z-10"></div>
           )}
           {selectedProduct === "Pumpkin Bread" && (
-            <div className="bg-gray-700 w-[30vw] h-[70vh] border border-gray-700 rounded-md z-10"></div>
+            <div className="bg-gray-700 w-[80vw] lg:w-[30vw] h-[70vh] border border-gray-700 rounded-md z-10"></div>
           )}
           {selectedProduct === "Bread Roll" && (
-            <div className="bg-gray-800 w-[30vw] h-[70vh] border border-gray-700 rounded-md z-10"></div>
+            <div className="bg-gray-800 w-[80vw] lg:w-[30vw] h-[70vh] border border-gray-700 rounded-md z-10"></div>
           )}
           {selectedProduct === "Jollof Rice" && (
-            <div className="bg-gray-900 w-[30vw] h-[70vh] border border-gray-700 rounded-md z-10"></div>
+            <div className="bg-gray-900 w-[80vw] lg:w-[30vw] h-[70vh] border border-gray-700 rounded-md z-10"></div>
           )}
           {/* Default Image when no product is selected */}
           {!selectedProduct && (
-            <figure className="w-[30vw] h-[70vh] z-10">
+            <figure className="w-[80vw] lg:w-[30vw] h-[70vh] z-10">
               <Jar />
             </figure>
           )}

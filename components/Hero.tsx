@@ -10,6 +10,7 @@ import Button from "@/components/ui/Button";
 export default function Hero() {
   const jarRef = useRef(null);
   // TODO: Try to optimise this
+  // TODO: get animations to work on screen sizes of 1279 and above
   useEffect(() => {
     // Function to check if viewport is large enough
     const checkViewport = () => {
@@ -120,14 +121,14 @@ export default function Hero() {
         <Navbar />
       </header>
 
-      <section className="flex flex-col lg:flex-row items-center justify-center gap-10 mt-20 mx-20 lg:mt-0">
+      <section className="flex flex-col lg:flex-row items-center justify-center gap-10 mt-20 mx-10 lg:mx-20 lg:mt-0">
         <aside className="flex flex-col gap-5 lg:p-20 text-center lg:text-left">
-          <h1 className="text-6xl font-bold">
+          <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold">
             Fresh Curry Paste <br />
             Made With Love
           </h1>
-          <p className="text-lg">
-            At Yaa's Garden Kitchen, we grow the freshest produce and <br /> use it to
+          <p className="text-base lg:text-lg md:w-[50ch] lg:w-[45ch]">
+            At Yaa's Garden Kitchen, we grow the freshest produce and use it to
             create our delicious products. Taste the difference today!
           </p>
           <div className="flex gap-4 items-center justify-center lg:justify-start">
@@ -135,7 +136,7 @@ export default function Hero() {
             <Button variant="solid" link="/buy">Buy Now</Button>
           </div>
         </aside>
-        <figure className="h-[70vh] lg:h-[100vh] w-[40vw] z-10" ref={jarRef}>
+        <figure className="h-[70vh] lg:h-[100vh] w-full lg:w-[40vw] z-10" ref={jarRef}>
           <Jar />
         </figure>
       </section>

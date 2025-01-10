@@ -8,40 +8,86 @@ export default function Ingredients() {
   gsap.registerPlugin(ScrollTrigger);
 
   useEffect(() => {
-    gsap.timeline({
-      scrollTrigger: {
-        trigger: "#part2",
-        start: "30% bottom",
-        end: "80% bottom",
-        scrub: true,
-        markers: false,
+    ScrollTrigger.matchMedia({
+      // For larger screens (desktop)
+      "(min-width: 1280px)": () => {
+        gsap.timeline({
+          scrollTrigger: {
+            trigger: "#part2",
+            start: "30% bottom",
+            end: "80% bottom",
+            scrub: true,
+            markers: false,
+          },
+        })
+          .fromTo(
+            "#part2",
+            {
+              x: "100%", // Start off-screen to the right
+              width: "100%", // Initially full width
+            },
+            {
+              x: "50%", // Move to the left to take half the screen
+              width: "50%", // Shrink width to 50%
+              ease: "power3.out",
+              duration: 2,
+            }
+          )
+          .fromTo(
+            ".ingredient",
+            { opacity: 0, y: 50 },
+            {
+              opacity: 1,
+              y: 0,
+              stagger: 0.2,
+              ease: "power3.out",
+            },
+            "-=0.5"
+          );
       },
-    })
-      .fromTo(
-        "#part2",
-        {
-          x: "100%", // Start off-screen to the right
-          width: "100%", // Initially full width
-        },
-        {
-          x: "50%", // Move to the left to take half the screen
-          width: "50%", // Shrink width to 50%
-          ease: "power3.out", // Smooth easing
-          duration: 2, // Adjust duration to make the slide-in slower (default is 1)
-        }
-      )
-      // Animate ingredients one at a time
-      .fromTo(
-        ".ingredient",
-        { opacity: 0, y: 50 },
-        {
-          opacity: 1,
-          y: 0,
-          stagger: 0.2,
-          ease: "power3.out",
-        },
-        "-=0.5" // Start staggered animations a bit before the slide-in finishes
-      );
+
+      // For smaller screens (phones/tablets)
+      "(max-width: 1279px)": () => {
+        gsap.timeline({
+          scrollTrigger: {
+            trigger: "#part2",
+            start: "30% bottom",
+            end: "80% bottom",
+            scrub: true,
+            markers: false,
+          },
+        })
+          .fromTo(
+            "#part2",
+            {
+              x: "100%", // Start off-screen to the right
+              width: "100%", // Initially full width
+            },
+            {
+              x: "0%", // Stay full width
+              width: "100%", // Maintain full width
+              ease: "power3.out",
+              duration: 2,
+            }
+          )
+          .fromTo(
+            ".ingredient",
+            { opacity: 0, y: 50 },
+            {
+              opacity: 1,
+              y: 0,
+              stagger: 0.2,
+              ease: "power3.out",
+            },
+            "-=0.5"
+          );
+      },
+    });
+
+    // Cleanup on component unmount
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
   }, []);
 
   return (
@@ -51,14 +97,14 @@ export default function Ingredients() {
     >
       <div className="ml-10">
         <ul className="gap-5">
-          <li className="ingredient lg:text-5xl m-5">Ingredient</li>
-          <li className="ingredient lg:text-5xl m-5">Ingredient</li>
-          <li className="ingredient lg:text-5xl m-5">Ingredient</li>
-          <li className="ingredient lg:text-5xl m-5">Ingredient</li>
-          <li className="ingredient lg:text-5xl m-5">Ingredient</li>
-          <li className="ingredient lg:text-5xl m-5">Ingredient</li>
+          <li className="ingredient text-3xl lg:text-5xl m-5">Ingredient</li>
+          <li className="ingredient text-3xl lg:text-5xl m-5">Ingredient</li>
+          <li className="ingredient text-3xl lg:text-5xl m-5">Ingredient</li>
+          <li className="ingredient text-3xl lg:text-5xl m-5">Ingredient</li>
+          <li className="ingredient text-3xl lg:text-5xl m-5">Ingredient</li>
+          <li className="ingredient text-3xl lg:text-5xl m-5">Ingredient</li>
         </ul>
-        <div className="mt-20 mr-5">
+        <div className="mt-20 mx-5">
           <i>
             Experience the rich flavors and superior nutritional value of our
             curry paste made from fresh, locally-grown produce. Our commitment

@@ -22,3 +22,20 @@ body {
 }
 
 /* TODO: Custom scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent; /* Transparent background */
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #4caf50, #81c784); /* Gradient green */
+  border-radius: 10px;
+  border: 2px solid transparent; /* Transparent border for a cleaner look */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, #388e3c, #66bb6a); /* Darker green on hover */
+}

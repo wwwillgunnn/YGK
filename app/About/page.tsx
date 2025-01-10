@@ -4,15 +4,16 @@ export default function about_us() {
   return (
     <main>
       <Navbar/>
-      <section className="flex flex-col lg:flex-row items-center justify-center gap-20 pb-10 my-20">
+      <section className="flex flex-col lg:flex-row items-center justify-center gap-20 pb-10 my-20 mx-10">
+        {/* This image should probablly be an aspect ratio */}
         <figure>
-          <div className="bg-gray-300 w-[30vw] h-[70vh] border border-gray-700 rounded-md"></div>
+          <div className="bg-gray-300 w-[60vw] lg:w-[30vw] h-[70vh] border border-gray-700 rounded-md"></div>
         </figure>
 
         <figcaption>
-          <h1 className="text-6xl font-bold text-center">About Us</h1>
+          <h1 className="text-4xl lg:text-6xl font-bold text-center">About Us</h1>
           <br />
-          <p className="text-lg w-[60ch]">Welcome to Yaa's Garden Kitchen, where every jar of curry paste and freshly baked delight tells 
+          <p className="mx-5 lg:mx-0 text-base lg:text-lg lg:max-w-[60ch] ">Welcome to Yaa's Garden Kitchen, where every jar of curry paste and freshly baked delight tells 
             the story of our home garden. We believe in the power of fresh, homegrown ingredients to create flavors that nourish the soul 
             and celebrate nature's bounty. <br />
             <br />
