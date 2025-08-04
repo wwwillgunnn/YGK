@@ -1,26 +1,37 @@
 import Link from "next/link";
-import { FiHome, FiUser, FiShoppingBag } from "react-icons/fi";
-import HamburgerMenu from "@/components/ui/HamburgerMenu";
+import Image from "next/image";
+import { MdAccountCircle, MdShoppingCart } from "react-icons/md";
 
 export default function Navbar() {
   return (
-    <nav className="relative flex items-center justify-between w-[80%] mx-auto h-16 px-8 mt-8 outline outline-2 outline-white rounded-full bg-transparent">
-      <HamburgerMenu />
-
-      <Link href="/" className="navbar-center cursor-pointer">
-        <FiHome size={32} />
+    <nav className="w-full relative flex items-center justify-between mx-auto px-8 pt-8 z-20">
+      {/* Logo */}
+      <Link href="/">
+        <Image 
+          src="/orchid.png"
+          alt="YGK Logo"
+          height={40}
+          width={40}
+        />
       </Link>
 
-      <div className="navbar-end">
+      {/* Nav Links */}
+      <ul className="flex flex-row gap-5">
+        <Link href="/" className="font-semibold hover:text-[#422323] transition-transform hover:-translate-y-1">Home</Link>
+        <Link href="/products" className="font-semibold hover:text-[#422323] transition-transform hover:-translate-y-1">Products</Link> 
+        <Link href="/about" className="font-semibold hover:text-[#422323] transition-transform hover:-translate-y-1">About</Link>
+        <Link href="/gallery" className="font-semibold hover:text-[#422323] transition-transform hover:-translate-y-1">Gallery</Link>
+      </ul>
+
+      {/* Shop links */}
         <div className="flex flex-row gap-5">
           <Link href="/account" className="cursor-pointer">
-            <FiUser size={32} />
+            <MdAccountCircle size={32} className="hover:text-[#422323]" />
           </Link>
           <Link href="/bag" className="cursor-pointer">
-            <FiShoppingBag size={32} />
+            <MdShoppingCart size={32} className="hover:text-[#422323]" />
           </Link>
         </div>
-      </div>
     </nav>
   );
 }

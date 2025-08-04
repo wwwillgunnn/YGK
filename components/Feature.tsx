@@ -7,7 +7,7 @@ import Benefit from "@/components/Benefit";
 
 export default function Feature() {
   const sectionRef = useRef(null);
-// TODO: MAKE ANIMATION ACTUALLY WORK
+  // TODO: MAKE ANIMATION ACTUALLY WORK
   useEffect(() => {
     gsap.fromTo(
       sectionRef.current,
@@ -20,14 +20,14 @@ export default function Feature() {
 
   return (
     <article
-      className="flex flex-col gap-20 items-center justify-center text-center mx-10"
+      className="min-h-[80vh] flex flex-col gap-20 items-center justify-center text-center mx-10 mb-16"
       id="part1"
       ref={sectionRef}
     >
       {/* TODO Change section to fade in stagger */}
-      <section className="flex flex-col gap-2 max-w-[65ch]">
+      <section className="flex flex-col gap-2 max-w-screen-lg">
         <h1 className="text-xl md:text-2xl lg:text-5xl font-bold">
-          Delicious Curry Paste Made With Freshly Grown Produce
+          Delicious Curry Paste Made With <br /><span style={{ color: "#422323" }}>Freshly Grown Produce</span>
         </h1>
         <p className="text-base lg:text-xl">
           At Yaa's Garden, we take pride in growing our own fresh produce and using it to create handmade curry paste. 

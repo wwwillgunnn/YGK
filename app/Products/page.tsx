@@ -2,10 +2,12 @@
 
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
-import dynamic from "next/dynamic";
 
 // Dynamically import the Jar component with SSR disabled
-const Jar = dynamic(() => import("@/components/assets/Jar"), { ssr: false });
+import Jar from "@/components/assets/Jar";
+import ChilliJar from "@/components/assets/ChilliJar"
+import Tomato from "@/components/assets/Tomato";
+import { CarouselDApiDemo } from "@/components/Test";
 
 export default function Products() {
   const [selectedProduct, setSelectedProduct] = useState<string | null>(null);
@@ -15,9 +17,10 @@ export default function Products() {
   };
 
   return (
-    <main>
+    <main className="min-h-screen m-auto px-20 bg-[radial-gradient(circle,_#6DB86B,_#305230)]">
       <Navbar />
       <section className="flex flex-col lg:flex-row items-center justify-center gap-20 lg:gap-[120px] pb-10 my-20">
+        {/* Left Side Menu */}
         <figcaption className="flex flex-col gap-5">
           {/* Text list of products with click events */}
           {["Curry Paste", "Chilli Paste", "Sour Dough", "Pumpkin Bread", "Bread Roll", "Jollof Rice"].map((product) => (
@@ -46,10 +49,12 @@ export default function Products() {
             </figure>
           )}
           {selectedProduct === "Chilli Paste" && (
-            <div className="bg-gray-400 w-[80vw] lg:w-[30vw] h-[70vh] border border-gray-700 rounded-md z-10"></div>
+            <figure className="w-[80vw] lg:w-[30vw] h-[70vh] z-10">
+              <ChilliJar />
+            </figure>
           )}
           {selectedProduct === "Sour Dough" && (
-            <div className="bg-gray-500 w-[80vw] lg:w-[30vw] h-[70vh] border border-gray-700 rounded-md z-10"></div>
+            <CarouselDApiDemo></CarouselDApiDemo>
           )}
           {selectedProduct === "Pumpkin Bread" && (
             <div className="bg-gray-700 w-[80vw] lg:w-[30vw] h-[70vh] border border-gray-700 rounded-md z-10"></div>

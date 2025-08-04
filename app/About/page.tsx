@@ -2,11 +2,12 @@ import Navbar from "@/components/Navbar"
 
 export default function about_us() {
   return (
-    <main>
+    <main className="min-h-screen m-auto px-20 bg-[radial-gradient(circle,_#6DB86B,_#305230)]">
       <Navbar/>
       <section className="flex flex-col lg:flex-row items-center justify-center gap-20 pb-10 my-20 mx-10">
         {/* This image should probablly be an aspect ratio */}
         <figure>
+          {/* TODO Put logo here */}
           <div className="bg-gray-300 w-[60vw] lg:w-[30vw] h-[70vh] border border-gray-700 rounded-md"></div>
         </figure>
 

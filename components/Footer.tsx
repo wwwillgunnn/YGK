@@ -4,8 +4,8 @@ import Link from "next/link"
 //TODO: add intagram and facebook links
 export default function Footer() {
   return (
-    <footer className="my-20 mx-16">
-      <div className="flex sm:flex-row flex-col gap-8 justify-between w-full">
+    <footer className="w-full">
+      {/* <div className="flex sm:flex-row flex-col gap-8 justify-between w-full">
         <div className="flex flex-col gap-8">
           <div className="flex flex-row gap-4 items-center">
           <Image src="/vercel.svg" alt="logo" width={60} height={60} />
@@ -13,7 +13,6 @@ export default function Footer() {
         </div>
         <form>
           <h6 className="footer-title">Stay updated with us!</h6>
-          {/* Not really responsive on mobile */}
           <fieldset className="form-control">
             <div className="join flex flex-row w-full items-center justify-center sm:items-start sm:justify-start">
               <input
@@ -27,7 +26,7 @@ export default function Footer() {
             </div>
           </fieldset>
         </form>
-      </div>
+      </div> */}
       <div className="flex flex-col gap-8">
         <div className="bg-white border-t mt-8 lg:mt-10"></div>
         <div className="flex flex-col lg:flex-row gap-8 justify-between w-full">
