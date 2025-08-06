@@ -45,6 +45,7 @@ export default function Hero() {
           end: "center-=50 center",
           scrub: true,
           markers: false,
+          scroller: document.body
         },
       })
       tl1.to(jarRef.current, {
@@ -72,6 +73,7 @@ export default function Hero() {
           end: "center center",
           scrub: true,
           markers: false,
+          scroller: document.body
         },
       })
       tl2.to(jarRef.current, {
@@ -100,7 +102,7 @@ export default function Hero() {
       </header>
 
       <section className="flex flex-col lg:flex-row items-center justify-center gap-10 mt-20 mx-10 lg:mx-20 lg:mt-0">
-        <aside className="flex flex-col gap-6 lg:p-20 text-center lg:text-left -translate-y-10">
+        <aside className="flex flex-col gap-6 lg:p-10 text-center lg:text-left -translate-y-10">
           <h1 className="text-3xl md:text-4xl lg:text-7xl font-bold">
             <span style={{ color: "#422323" }}>Fresh</span> Curry Paste <br />
             Made With <span style={{ color: "#422323" }}>Love</span>
@@ -110,10 +112,10 @@ export default function Hero() {
             create our delicious products. Taste the difference today!
           </p>
           <div className="flex gap-4 items-center justify-center lg:justify-start">
-            <Button variant="outline" size="lg" className="border-[#422323] bg-transparent hover:bg-[#422323] hover:text-white">
+            <Button variant="outline" size="lg" className="h-12 border-[#422323] bg-transparent hover:bg-[#422323] hover:text-white">
               Learn More
             </Button>
-            <Button variant="default" size="lg" className="bg-[#422323] hover:bg-[#311818]">
+            <Button variant="default" size="lg" className="h-12 bg-[#422323] hover:bg-[#311818]">
               Buy Now
             </Button>
           </div>
