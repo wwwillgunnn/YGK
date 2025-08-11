@@ -14,7 +14,7 @@ Example:
 
 
 ## 🛠 Tech Stack
-Next.js – React framework for production.
-Spline – 3D modeling and embedding.
-GSAP – High-performance animations.
-Tailwind CSS – Styling.
+- Next.js – React framework for production.
+- Spline – 3D modeling and embedding.
+- GSAP – High-performance animations.
+- Tailwind CSS – Styling.
