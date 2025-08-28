@@ -9,10 +9,7 @@ interface ProductProps {
 
 export default function ProductPreview({name, weight, price}: ProductProps) {
   return (
-    <div className="min-h-96 max-w-80 border-2 border-white rounded-3xl transition-transform duration-300 hover:scale-110">
-      {/* <figure className="h-80 w-96 z-10">
-        <Jar />
-      </figure> */}
+    <div className="min-h-[560px] min-w-[400px] border-2 border-white rounded-3xl">
       <Image 
         src="/orchid.png"
         alt="YGK Logo"

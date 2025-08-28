@@ -7,7 +7,6 @@ import Jar from "@/components/assets/Jar";
 import Navbar from "@/components/Navbar";
 import { Button } from "@/components/ui/Button";
 import Image from "next/image";
-import { Link } from "lucide-react";
 
 export default function Hero() {
   const jarRef = useRef(null);
@@ -50,7 +49,7 @@ export default function Hero() {
       })
       tl1.to(jarRef.current, {
         x: "-20vw",
-        y: "110vh",
+        y: "120vh",
         rotation: 15,
         scale: 1,
       });
@@ -78,7 +77,7 @@ export default function Hero() {
       })
       tl2.to(jarRef.current, {
         x: "-20vw",
-        y: "210vh",
+        y: "220vh",
         rotation: 0,
         scale: 1,
       });
@@ -112,10 +111,10 @@ export default function Hero() {
             create our delicious products. Taste the difference today!
           </p>
           <div className="flex gap-4 items-center justify-center lg:justify-start">
-            <Button variant="outline" size="lg" className="h-12 border-[#422323] bg-transparent hover:bg-[#422323] hover:text-white">
+            <Button variant="outline" size="lg" className="h-16 border-[#422323] bg-transparent border-2 hover:bg-[#422323] text-[#422323] hover:text-white">
               Learn More
             </Button>
-            <Button variant="default" size="lg" className="h-12 bg-[#422323] hover:bg-[#311818]">
+            <Button variant="default" size="lg" className="h-16 bg-[#422323] hover:bg-[#311818]">
               Buy Now
             </Button>
           </div>
