@@ -1,8 +1,9 @@
 import ProductPreview from "./ProductPreview";
+import { Button } from "./ui/Button";
 
 export default function OtherProducts() {
   return (
-    <div className="min-h-[70vh] mt-20">
+    <div className="min-h-[70vh] mt-20 flex flex-col justify-center items-center">
         <div className="text-center pb-20">
             <h1 className="text-3xl md:text-4xl lg:text-7xl font-bold">Other Products</h1>
             <p className="text-lg pt-4">Enjoy our fantastic curry paste with other things on the side</p>
@@ -20,16 +21,12 @@ export default function OtherProducts() {
                 price="$20"
             />
             <ProductPreview
-                name="Pumpkin Bread"
-                weight="100g"
-                price="$20"
-            />
-            <ProductPreview
                 name="Jollof Rice"
                 weight="1kg"
                 price="$40"
             />
         </div>
+        <Button>See More Products</Button>
     </div>
   )
 }
