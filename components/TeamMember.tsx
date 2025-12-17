@@ -1,23 +1,27 @@
 import Image from "next/image";
 
-type TeamMember = {
-    src: string;
-    alt: string;
-    name: string;
+type TeamMemberProps = {
+  src: string;
+  alt: string;
+  name: string;
 };
 
-export default function TeamMember({src, alt, name}: TeamMember) {
+export default function TeamMember({ src, alt, name }: TeamMemberProps) {
   return (
-    <figure className="flex flex-col items-center gap-3">
-      <Image 
-        src={src} 
-        alt={alt} 
-        width={350} 
-        height={400} 
+    <figure className="group flex flex-col items-center gap-4">
+      <Image
+        src={src}
+        alt={alt}
+        width={320}
+        height={360}
+        className="h-auto w-[260px] object-cover sm:w-[280px] md:w-[300px] transition ease-in-out group-hover:-translate-y-1"
       />
-      <figcaption>
-        <p className="lg:text-xl">{name}</p>
+
+      <figcaption className="text-center">
+        {/* <p className="text-lg font-semibold tracking-tight md:text-xl">
+          {name}
+        </p> */}
       </figcaption>
     </figure>
-  )
+  );
 }

@@ -8,9 +8,15 @@ type FadeInStaggerProps = {
   children: React.ReactNode;
   duration?: number; // Optional: duration of the animation
   delay?: number; // Optional: delay between staggered animations
+  className?: string;
 };
 
-export default function FadeInStagger({ children, duration = 1, delay = 0.2 }: FadeInStaggerProps) {
+export default function FadeInStagger({
+  children,
+  duration = 1,
+  delay = 0.2,
+  className,
+}: FadeInStaggerProps) {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -42,12 +48,15 @@ export default function FadeInStagger({ children, duration = 1, delay = 0.2 }: F
 
     // Cleanup on component unmount
     return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, [duration, delay]);
 
   return (
-    <div ref={containerRef} className="flex flex-col justify-center items-center lg:flex-row gap-5 lg:gap-20">
+    <div
+      ref={containerRef}
+      className="flex flex-col justify-center items-center lg:flex-row gap-5 lg:gap-20"
+    >
       {children}
     </div>
   );

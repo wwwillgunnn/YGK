@@ -26,14 +26,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-hidden`}
+      >
         <LenisSmoothScroll />
         {children}
       </body>
     </html>
   );
 }
-
-// TODO: add lenis smooth scrolling
 
 // ! Created by William Gunn
