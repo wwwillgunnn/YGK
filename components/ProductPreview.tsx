@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 interface ProductProps {
   name: string;
@@ -8,7 +9,10 @@ interface ProductProps {
 
 export default function ProductPreview({ name, weight, price }: ProductProps) {
   return (
-    <article className="group overflow-hidden rounded-3xl border border-white/15 bg-white/5 shadow-sm backdrop-blur transition hover:-translate-y-1 hover:border-white/25 hover:bg-white/10">
+    <Link
+      href="/products"
+      className="group overflow-hidden rounded-3xl border border-white/15 bg-white/5 shadow-sm backdrop-blur transition hover:-translate-y-1 hover:border-white/25 hover:bg-white/10"
+    >
       <div className="flex items-center justify-center p-8">
         <div className="relative h-44 w-44">
           <Image
@@ -32,6 +36,6 @@ export default function ProductPreview({ name, weight, price }: ProductProps) {
           </span>
         </div>
       </div>
-    </article>
+    </Link>
   );
 }

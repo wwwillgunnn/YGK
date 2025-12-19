@@ -1,7 +1,9 @@
+import type { IconType } from "react-icons";
+
 type BenefitProps = {
   title: string;
   description: string;
-  Icon: any;
+  Icon: IconType;
 };
 
 export default function Benefit({ title, description, Icon }: BenefitProps) {

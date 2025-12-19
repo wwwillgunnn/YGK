@@ -15,7 +15,6 @@ export default function FadeInStagger({
   children,
   duration = 1,
   delay = 0.2,
-  className,
 }: FadeInStaggerProps) {
   const containerRef = useRef<HTMLDivElement>(null);
 

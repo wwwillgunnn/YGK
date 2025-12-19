@@ -1,6 +1,3 @@
-import Image from "next/image"
-import Link from "next/link"
-
 //TODO: add intagram and facebook links
 export default function Footer() {
   return (
@@ -35,9 +32,12 @@ export default function Footer() {
             <a className="link">Terms of Service</a>
             <a className="link">Cookie Policy</a>
           </div>
-          <p>Copyright © {new Date().getFullYear()} - All right reserved by Yaa's Garden Kitchen</p>
+          <p>
+            Copyright © {new Date().getFullYear()} - All right reserved by
+            Yaa&apos;s Garden Kitchen
+          </p>
         </div>
       </div>
     </footer>
-  )
+  );
 }

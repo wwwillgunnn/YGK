@@ -56,9 +56,9 @@ export default function Feature() {
         </h1>
 
         <p data-animate className="text-base lg:text-xl">
-          At Yaa's Garden, we take pride in growing our own fresh produce and
-          using it to create handmade curry paste. Our small local business is
-          dedicated to providing you with the highest quality ingredients and
+          At Yaa&apos;s Garden, we take pride in growing our own fresh produce
+          and using it to create handmade curry paste. Our small local business
+          is dedicated to providing you with the highest quality ingredients and
           flavours.
         </p>
       </section>

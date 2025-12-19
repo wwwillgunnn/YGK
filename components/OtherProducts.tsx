@@ -1,6 +1,6 @@
 import Link from "next/link";
 import ProductPreview from "./ProductPreview";
-import { Button } from "./ui/Button";
+import { Button } from "./ui/button";
 
 export default function OtherProducts() {
   return (
@@ -22,7 +22,9 @@ export default function OtherProducts() {
 
       <div className="mt-12 flex justify-center">
         <Link href="/products">
-          <Button>See All Products</Button>
+          <Button size="lg" className="bg-[#422323] hover:bg-[#311818]">
+            See All Products
+          </Button>
         </Link>
       </div>
     </section>

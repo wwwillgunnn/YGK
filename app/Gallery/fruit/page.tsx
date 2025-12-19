@@ -1,6 +1,6 @@
-import Carousel from '@/components/Carousel'
-import Navbar from '@/components/Navbar'
-import React from 'react'
+import Navbar from "@/components/Navbar";
+import { Carousel } from "@/components/ui/carousel";
+import React from "react";
 
 export default function fruit() {
   return (
@@ -8,5 +8,5 @@ export default function fruit() {
       <Navbar />
       <Carousel />
     </div>
-  )
+  );
 }

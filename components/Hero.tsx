@@ -5,7 +5,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Jar from "@/components/assets/Jar";
 import Navbar from "@/components/Navbar";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 import Image from "next/image";
 
 export default function Hero() {
@@ -105,8 +105,8 @@ export default function Hero() {
             Made With <span style={{ color: "#422323" }}>Love</span>
           </h1>
           <p className="text-base lg:text-lg md:w-[50ch] lg:w-[48ch]">
-            At Yaa's Garden Kitchen, we grow the freshest produce and use it to
-            create our delicious products. Taste the difference today!
+            At Yaa&apos;s Garden Kitchen, we grow the freshest produce and use
+            it to create our delicious products. Taste the difference today!
           </p>
           <div className="flex gap-4 items-center justify-center lg:justify-start">
             <Button

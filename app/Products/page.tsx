@@ -5,8 +5,7 @@ import Navbar from "@/components/Navbar";
 
 // Dynamically import the Jar component with SSR disabled
 import Jar from "@/components/assets/Jar";
-import ChilliJar from "@/components/assets/ChilliJar"
-import Tomato from "@/components/assets/Tomato";
+import ChilliJar from "@/components/assets/ChilliJar";
 import { CarouselDApiDemo } from "@/components/Test";
 
 export default function Products() {
@@ -23,14 +22,24 @@ export default function Products() {
         {/* Left Side Menu */}
         <figcaption className="flex flex-col gap-5">
           {/* Text list of products with click events */}
-          {["Curry Paste", "Chilli Paste", "Sour Dough", "Pumpkin Bread", "Bread Roll", "Jollof Rice"].map((product) => (
+          {[
+            "Curry Paste",
+            "Chilli Paste",
+            "Sour Dough",
+            "Pumpkin Bread",
+            "Bread Roll",
+            "Jollof Rice",
+          ].map((product) => (
             <div key={product}>
               <h1
                 className={`text-6xl font-bold mb-2 cursor-pointer ${
-                  selectedProduct === product ? 'text-white' : 'text-transparent hover:text-white'
+                  selectedProduct === product
+                    ? "text-white"
+                    : "text-transparent hover:text-white"
                 }`}
                 style={{
-                  WebkitTextStroke: selectedProduct === product ? '0' : '1px white', // Remove stroke when selected
+                  WebkitTextStroke:
+                    selectedProduct === product ? "0" : "1px white", // Remove stroke when selected
                 }}
                 onClick={() => handleProductClick(product)}
               >

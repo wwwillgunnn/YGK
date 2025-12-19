@@ -1,5 +1,5 @@
 import Tomato from "@/components/assets/Tomato";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 
 export default function Contact() {
   return (
@@ -47,7 +47,7 @@ export default function Contact() {
               <div className="pt-2">
                 <Button
                   variant="default"
-                  className="pointer-events-auto w-full"
+                  className="pointer-events-auto w-full bg-[#422323] hover:bg-[#311818]"
                 >
                   Submit
                 </Button>

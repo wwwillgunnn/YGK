@@ -6,7 +6,7 @@ type TeamMemberProps = {
   name: string;
 };
 
-export default function TeamMember({ src, alt, name }: TeamMemberProps) {
+export default function TeamMember({ src, alt }: TeamMemberProps) {
   return (
     <figure className="group flex flex-col items-center gap-4">
       <Image
