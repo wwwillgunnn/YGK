@@ -4,7 +4,7 @@ export default function about_us() {
   return (
     <main className="min-h-screen m-auto px-20 bg-[radial-gradient(circle,_#6DB86B,_#305230)]">
       <Navbar />
-      <section className="flex flex-col lg:flex-row items-center justify-center gap-20 pb-10 my-20 mx-10">
+      <section className="flex flex-col lg:flex-row items-center justify-center gap-20 py-20 mx-10">
         {/* This image should probablly be an aspect ratio */}
         <figure>
           {/* TODO Put logo here */}
