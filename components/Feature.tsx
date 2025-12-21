@@ -41,7 +41,7 @@ export default function Feature() {
   }, []);
 
   const columnStyles =
-    "flex flex-col gap-10 lg:gap-28 2xl:gap-[240px] w-[30ch]";
+    "flex flex-col gap-10 lg:gap-28 2xl:gap-[240px] w-[30ch] 2xl:w-[40ch]";
 
   return (
     <article

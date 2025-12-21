@@ -6,10 +6,18 @@ import Navbar from "@/components/Navbar";
 // Dynamically import the Jar component with SSR disabled
 import Jar from "@/components/assets/Jar";
 import ChilliJar from "@/components/assets/ChilliJar";
-import { CarouselDApiDemo } from "@/components/Test";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 export default function Products() {
-  const [selectedProduct, setSelectedProduct] = useState<string | null>(null);
+  const [selectedProduct, setSelectedProduct] = useState<string | null>(
+    "Curry Paste"
+  );
 
   const handleProductClick = (product: string) => {
     setSelectedProduct(product);
@@ -53,32 +61,118 @@ export default function Products() {
         {/* Dynamic rendering of images based on selected product */}
         <figure className="relative">
           {selectedProduct === "Curry Paste" && (
-            <figure className="w-[80vw] lg:w-[30vw] h-[70vh] z-10">
-              <Jar />
-            </figure>
+            <Carousel className="max-w-[30vw] h-[70vh] text-black">
+              <CarouselContent>
+                <CarouselItem>
+                  <figure className="h-[70vh]">
+                    <Jar />
+                  </figure>
+                </CarouselItem>
+                <CarouselItem>
+                  <div className="bg-gray-700 w-[80vw] lg:w-[30vw] h-[70vh] border border-gray-700 rounded-md z-10"></div>
+                </CarouselItem>
+                <CarouselItem>
+                  <div className="bg-gray-600 w-[80vw] lg:w-[30vw] h-[70vh] border border-gray-700 rounded-md z-10"></div>
+                </CarouselItem>
+              </CarouselContent>
+              <CarouselPrevious />
+              <CarouselNext />
+            </Carousel>
           )}
           {selectedProduct === "Chilli Paste" && (
-            <figure className="w-[80vw] lg:w-[30vw] h-[70vh] z-10">
-              <ChilliJar />
-            </figure>
+            <Carousel className="max-w-[30vw] h-[70vh] text-black">
+              <CarouselContent>
+                <CarouselItem>
+                  <figure className="h-[70vh]">
+                    <ChilliJar />
+                  </figure>
+                </CarouselItem>
+                <CarouselItem>
+                  <div className="bg-gray-700 w-[80vw] lg:w-[30vw] h-[70vh] border border-gray-700 rounded-md z-10"></div>
+                </CarouselItem>
+                <CarouselItem>
+                  <div className="bg-gray-600 w-[80vw] lg:w-[30vw] h-[70vh] border border-gray-700 rounded-md z-10"></div>
+                </CarouselItem>
+              </CarouselContent>
+              <CarouselPrevious />
+              <CarouselNext />
+            </Carousel>
           )}
           {selectedProduct === "Sour Dough" && (
-            <CarouselDApiDemo></CarouselDApiDemo>
+            <Carousel className="max-w-[30vw] h-[70vh] text-black">
+              <CarouselContent>
+                <CarouselItem>
+                  <figure className="h-[70vh]">
+                    <Jar />
+                  </figure>
+                </CarouselItem>
+                <CarouselItem>
+                  <div className="bg-gray-700 w-[80vw] lg:w-[30vw] h-[70vh] border border-gray-700 rounded-md z-10"></div>
+                </CarouselItem>
+                <CarouselItem>
+                  <div className="bg-gray-600 w-[80vw] lg:w-[30vw] h-[70vh] border border-gray-700 rounded-md z-10"></div>
+                </CarouselItem>
+              </CarouselContent>
+              <CarouselPrevious />
+              <CarouselNext />
+            </Carousel>
           )}
           {selectedProduct === "Pumpkin Bread" && (
-            <div className="bg-gray-700 w-[80vw] lg:w-[30vw] h-[70vh] border border-gray-700 rounded-md z-10"></div>
+            <Carousel className="max-w-[30vw] h-[70vh] text-black">
+              <CarouselContent>
+                <CarouselItem>
+                  <figure className="h-[70vh]">
+                    <Jar />
+                  </figure>
+                </CarouselItem>
+                <CarouselItem>
+                  <div className="bg-gray-700 w-[80vw] lg:w-[30vw] h-[70vh] border border-gray-700 rounded-md z-10"></div>
+                </CarouselItem>
+                <CarouselItem>
+                  <div className="bg-gray-600 w-[80vw] lg:w-[30vw] h-[70vh] border border-gray-700 rounded-md z-10"></div>
+                </CarouselItem>
+              </CarouselContent>
+              <CarouselPrevious />
+              <CarouselNext />
+            </Carousel>
           )}
           {selectedProduct === "Bread Roll" && (
-            <div className="bg-gray-800 w-[80vw] lg:w-[30vw] h-[70vh] border border-gray-700 rounded-md z-10"></div>
+            <Carousel className="max-w-[30vw] h-[70vh] text-black">
+              <CarouselContent>
+                <CarouselItem>
+                  <figure className="h-[70vh]">
+                    <Jar />
+                  </figure>
+                </CarouselItem>
+                <CarouselItem>
+                  <div className="bg-gray-700 w-[80vw] lg:w-[30vw] h-[70vh] border border-gray-700 rounded-md z-10"></div>
+                </CarouselItem>
+                <CarouselItem>
+                  <div className="bg-gray-600 w-[80vw] lg:w-[30vw] h-[70vh] border border-gray-700 rounded-md z-10"></div>
+                </CarouselItem>
+              </CarouselContent>
+              <CarouselPrevious />
+              <CarouselNext />
+            </Carousel>
           )}
           {selectedProduct === "Jollof Rice" && (
-            <div className="bg-gray-900 w-[80vw] lg:w-[30vw] h-[70vh] border border-gray-700 rounded-md z-10"></div>
-          )}
-          {/* Default Image when no product is selected */}
-          {!selectedProduct && (
-            <figure className="w-[80vw] lg:w-[30vw] h-[70vh] z-10">
-              <Jar />
-            </figure>
+            <Carousel className="max-w-[30vw] h-[70vh] text-black">
+              <CarouselContent>
+                <CarouselItem>
+                  <figure className="h-[70vh]">
+                    <Jar />
+                  </figure>
+                </CarouselItem>
+                <CarouselItem>
+                  <div className="bg-gray-700 w-[80vw] lg:w-[30vw] h-[70vh] border border-gray-700 rounded-md z-10"></div>
+                </CarouselItem>
+                <CarouselItem>
+                  <div className="bg-gray-600 w-[80vw] lg:w-[30vw] h-[70vh] border border-gray-700 rounded-md z-10"></div>
+                </CarouselItem>
+              </CarouselContent>
+              <CarouselPrevious />
+              <CarouselNext />
+            </Carousel>
           )}
         </figure>
       </section>

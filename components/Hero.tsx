@@ -75,7 +75,7 @@ export default function Hero() {
     });
 
     tl2.to(jarRef.current, {
-      x: "-20vw",
+      x: "-18vw",
       y: "220vh",
       rotation: 0,
       scale: 1,

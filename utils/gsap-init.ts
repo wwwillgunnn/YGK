@@ -1,4 +1,3 @@
-// gsap-init.ts
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 

@@ -3,3 +3,6 @@
 images for product section on homepage
 add images to gallery
 add image to about
+
+mobile
+responsive navbar
