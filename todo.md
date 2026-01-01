@@ -6,3 +6,5 @@ add image to about
 
 mobile
 responsive navbar
+
+# try this https://youtu.be/fgbEwVWlpsI?si=I04MwuppycTaZ7-X
