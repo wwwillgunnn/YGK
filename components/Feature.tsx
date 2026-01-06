@@ -49,13 +49,16 @@ export default function Feature() {
       id="part1"
       ref={sectionRef}
     >
-      <section className="flex flex-col gap-2 max-w-screen-lg">
-        <h1 data-animate className="text-xl md:text-2xl lg:text-5xl font-bold">
-          Delicious Curry Paste Made With <br />
-          <span style={{ color: "#422323" }}>Freshly Grown Produce</span>
+      <section className="flex flex-col items-center justify-center gap-2 max-w-screen-lg">
+        <h1
+          data-animate
+          className="max-w-[25ch] text-center text-xl md:text-2xl lg:text-5xl font-bold"
+        >
+          Delicious Curry Paste Made With
+          <span style={{ color: "#422323" }}> Freshly Grown Produce</span>
         </h1>
 
-        <p data-animate className="text-base lg:text-xl">
+        <p data-animate className="text-sm md:text-base lg:text-lg">
           At Yaa&apos;s Garden, we take pride in growing our own fresh produce
           and using it to create handmade curry paste. Our small local business
           is dedicated to providing you with the highest quality ingredients and

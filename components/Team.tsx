@@ -17,7 +17,7 @@ export default function Team() {
       <FadeInStagger
         duration={1}
         delay={0.15}
-        className="mt-12 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3"
+        className="mt-12 grid grid-cols-1 gap-5 md:gap-10 sm:grid-cols-2 lg:grid-cols-3"
       >
         <TeamMember
           src="/notion-avatar-will.svg"

@@ -98,16 +98,18 @@ export default function Hero() {
         <Navbar />
       </header>
 
-      <section className="flex flex-col lg:flex-row items-center justify-center gap-10 mt-20 mx-10 lg:mx-20 lg:mt-0">
-        <aside className="flex flex-col gap-6 lg:p-10 text-center lg:text-left -translate-y-10">
-          <h1 className="text-3xl md:text-4xl lg:text-6xl 2xl:text-7xl font-bold">
-            <span style={{ color: "#422323" }}>Fresh</span> Curry Paste <br />
-            Made With <span style={{ color: "#422323" }}>Love</span>
-          </h1>
-          <p className="text-base lg:text-lg md:w-[50ch] lg:w-[48ch]">
-            At Yaa&apos;s Garden Kitchen, we grow the freshest produce and use
-            it to create our delicious products. Taste the difference today!
-          </p>
+      <section className="flex flex-col lg:flex-row items-center justify-center md:gap-10 mt-20 mx-10 lg:mx-20 lg:mt-0">
+        <aside className="flex flex-col gap-8 lg:p-10 text-center lg:text-left -translate-y-10">
+          <div className="flex flex-col gap-2">
+            <h1 className="text-3xl md:text-4xl lg:text-6xl 2xl:text-7xl font-bold">
+              <span style={{ color: "#422323" }}>Fresh</span> Curry Paste <br />
+              Made With <span style={{ color: "#422323" }}>Love</span>
+            </h1>
+            <p className="text-sm md:text-base lg:text-lg md:w-[50ch] lg:w-[48ch]">
+              At Yaa&apos;s Garden Kitchen, we grow the freshest produce and use
+              it to create our delicious products. Taste the difference today!
+            </p>
+          </div>
           <div className="flex gap-4 items-center justify-center lg:justify-start">
             <Button
               variant="outline"
@@ -127,7 +129,7 @@ export default function Hero() {
         </aside>
 
         <figure
-          className="h-[70vh] lg:h-[100vh] w-full lg:w-[40vw] z-10"
+          className="h-[50vh] md:h-[70vh] lg:h-[100vh] w-full lg:w-[40vw] z-10"
           ref={jarRef}
         >
           <Jar />

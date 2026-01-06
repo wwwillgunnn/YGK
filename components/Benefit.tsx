@@ -11,8 +11,8 @@ export default function Benefit({ title, description, Icon }: BenefitProps) {
     <figure data-animate className="flex flex-col gap-5 items-center">
       <Icon className="text-4xl text-white" aria-label={`${title} Icon`} />
       <figcaption>
-        <p className="font-bold">{title}</p>
-        <p>{description}</p>
+        <p className="text-base md:text-lg lg:text-xl font-bold">{title}</p>
+        <p className="text-sm md:text-base lg:text-lg">{description}</p>
       </figcaption>
     </figure>
   );
