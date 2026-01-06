@@ -21,7 +21,7 @@ const navLinks = [
 
 export default function Navbar() {
   return (
-    <nav className="w-full relative flex items-center justify-between mx-auto px-20 pt-8 z-20">
+    <nav className="w-full relative flex items-center justify-between mx-auto px-0 md:px-20 pt-8 z-20">
       {/* Logo */}
       <Link href="/" className="shrink-0">
         <Image src="/orchid.png" alt="YGK Logo" height={40} width={40} />
