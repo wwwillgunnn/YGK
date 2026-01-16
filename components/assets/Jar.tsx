@@ -1,8 +1,15 @@
+"use client";
+
 import Spline from "@splinetool/react-spline";
 
 export default function Jar() {
   return (
-    <Spline scene="https://prod.spline.design/U9djk3VlTi7fm6aL/scene.splinecode" />
+    <Spline
+      scene="https://prod.spline.design/U9djk3VlTi7fm6aL/scene.splinecode"
+      onLoad={() => {
+        window.dispatchEvent(new Event("spline:loaded"));
+      }}
+    />
   );
 }
 

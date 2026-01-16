@@ -15,9 +15,24 @@ export default function OtherProducts() {
       </header>
 
       <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-        <ProductPreview name="Chilli Paste" weight="50ml" price="$20" />
-        <ProductPreview name="Sour Dough" weight="100g" price="$20" />
-        <ProductPreview name="Jollof Rice" weight="1kg" price="$40" />
+        <ProductPreview
+          name="Chilli Paste"
+          image="/chilli-paste.png"
+          weight="50ml"
+          price="$20"
+        />
+        <ProductPreview
+          name="Sour Dough"
+          image="/products/sourdough.JPG"
+          weight="100g"
+          price="$20"
+        />
+        <ProductPreview
+          name="Jollof Rice"
+          image="/jollof-rice.png"
+          weight="1kg"
+          price="$40"
+        />
       </div>
 
       <div className="mt-12 flex justify-center">

@@ -3,11 +3,17 @@ import Link from "next/link";
 
 interface ProductProps {
   name: string;
+  image: string;
   weight: string;
   price: string;
 }
 
-export default function ProductPreview({ name, weight, price }: ProductProps) {
+export default function ProductPreview({
+  name,
+  image,
+  weight,
+  price,
+}: ProductProps) {
   return (
     <Link
       href="/products"
@@ -16,7 +22,7 @@ export default function ProductPreview({ name, weight, price }: ProductProps) {
       <div className="flex items-center justify-center p-8">
         <div className="relative h-44 w-44">
           <Image
-            src="/orchid.png"
+            src={image}
             alt={`${name} product image`}
             fill
             className="object-contain transition group-hover:scale-105"

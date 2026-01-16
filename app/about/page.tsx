@@ -1,14 +1,19 @@
 import Navbar from "@/components/Navbar";
+import Image from "next/image";
 
 export default function about_us() {
   return (
     <main className="min-h-screen m-auto px-20 bg-[radial-gradient(circle,_#6DB86B,_#305230)]">
       <Navbar />
-      <section className="flex flex-col lg:flex-row items-center justify-center gap-20 py-20 mx-10">
-        {/* This image should probablly be an aspect ratio */}
+      <section className="flex flex-col lg:flex-row justify-center gap-20 py-10 mx-10">
         <figure>
-          {/* TODO Put logo here */}
-          <div className="bg-gray-300 w-[60vw] lg:w-[30vw] h-[70vh] border border-gray-700 rounded-md"></div>
+          <Image
+            src="/vegetables/willspumpkins.JPEG"
+            alt="Yaa's Garden Kitchen Fresh Produce"
+            width={450}
+            height={350}
+            className="mt-4 rounded-md shadow-lg"
+          />
         </figure>
 
         <figcaption>
@@ -16,7 +21,7 @@ export default function about_us() {
             About Us
           </h1>
           <br />
-          <p className="mx-5 lg:mx-0 text-base lg:text-lg lg:max-w-[60ch] ">
+          <p className="mx-5 lg:mx-0 text-sm md:text-base lg:max-w-[60ch] ">
             Welcome to Yaa&apos;s Garden Kitchen, where every jar of curry paste
             and freshly baked delight tells the story of our home garden. We
             believe in the power of fresh, homegrown ingredients to create

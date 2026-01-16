@@ -141,14 +141,24 @@ export default function Hero() {
         className="absolute top-[80%] -left-[400px] 10 opacity-10"
         ref={orchidOne}
       >
-        <Image src="/orchid.png" alt="YGK Logo" height={1000} width={1000} />
+        <Image
+          src="/brown-orchid-logo.svg"
+          alt="YGK Logo"
+          height={1000}
+          width={1000}
+        />
       </div>
 
       <div
         className="absolute translate-y-[1400px] -right-[400px] 10 opacity-10"
         ref={orchidTwo}
       >
-        <Image src="/orchid.png" alt="YGK Logo" height={1000} width={1000} />
+        <Image
+          src="/brown-orchid-logo.svg"
+          alt="YGK Logo"
+          height={1000}
+          width={1000}
+        />
       </div>
     </article>
   );

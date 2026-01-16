@@ -9,7 +9,7 @@ import SplashGate from "@/components/SplashGate";
 
 export default function Home() {
   return (
-    <SplashGate durationMs={1200}>
+    <SplashGate>
       <main
         className="flex flex-col items-center gap-12 md:gap-32 m-auto pt-0 p-8 md:p-20 md:pt-0 top-0 z-0 overflow-x-hidden
         bg-[linear-gradient(to_bottom,_#569255_0%,_#6DB86B_10%,_#569255_30%,_#305230_85%,_#422323_100%)]"
