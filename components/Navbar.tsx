@@ -34,7 +34,7 @@ export default function Navbar() {
   const pathname = usePathname() || "/";
 
   return (
-    <nav className="w-full relative flex items-center justify-between mx-auto px-6 md:px-20 pt-8 z-20">
+    <nav className="w-full relative flex items-center justify-between mx-auto p-6 md:px-20 lg:px-40 z-20">
       <div className="flex flex-row gap-5 justify-center items-center">
         {/* Logo */}
         <Link href="/" className="shrink-0">

@@ -4,9 +4,9 @@ import { Button } from "@/components/ui/button";
 export default function Contact() {
   return (
     <section className="relative w-[100vw] pt-20">
-      <div className="flex xl:flex-row xl:justify-end justify-center items-center mx-5 sm:mx-10 md:mx-20 xl:mr-[10rem]">
+      <div className="flex xl:flex-row xl:justify-end justify-center items-center mx-5 sm:mx-10 2xl:mx-20 2xl:mr-[15rem]">
         {/* Card sits above visually, but lets mouse pass through except inputs */}
-        <div className="pointer-events-none relative z-20 min-h-[500px] sm:w-[40rem] md:w-[50rem] lg:w-[60rem] rounded-3xl border border-white/10 bg-white/5 bg-opacity-50 p-10 shadow-sm backdrop-blur">
+        <div className="pointer-events-none relative z-20 min-h-[500px] sm:w-[40rem] md:w-[50rem] lg:w-[55rem] xl:w-[60rem] rounded-3xl border border-white/10 bg-white/5 bg-opacity-50 p-10 shadow-sm backdrop-blur">
           <div>
             <h2 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
               Connect With Us

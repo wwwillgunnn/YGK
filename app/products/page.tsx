@@ -42,25 +42,25 @@ const miscProducts: MiscProduct[] = [
   {
     title: "Seasonal Garden Mix",
     description: "A rotating mix of whatever is looking best this week.",
-    image: "/products/misc-1.jpg",
+    image: "/products/misc-1.JPG",
     tag: "Seasonal",
   },
   {
     title: "Homemade Snacks",
     description: "Small batch snacks made fresh.",
-    image: "/products/misc-2.jpg",
+    image: "/products/misc-2.JPG",
     tag: "Small batch",
   },
   {
     title: "Gift Bundle",
     description: "A simple bundle for sharing with friends or family.",
-    image: "/products/misc-3.jpg",
+    image: "/products/misc-3.JPG",
     tag: "Gift",
   },
   {
     title: "Market Special",
     description: "Limited items that change from time to time.",
-    image: "/products/misc-4.jpg",
+    image: "/products/misc-4.JPG",
     tag: "Limited",
   },
 ];
@@ -83,53 +83,54 @@ export default function Products() {
   }, [selectedProduct]);
 
   const products = useMemo(() => {
+    // TODO: add idle spin animation to 3D models
     return {
       "Curry Paste": {
         model: <Jar />,
         images: [
-          "/products/curry-1.jpg",
-          "/products/curry-2.jpg",
-          "/products/curry-3.jpg",
+          "/products/curry-1.JPG",
+          "/products/curry-2.JPG",
+          "/products/curry-3.JPG",
         ],
       },
       "Chilli Paste": {
         model: <ChilliJar />,
         images: [
-          "/products/chilli-1.jpg",
-          "/products/chilli-2.jpg",
-          "/products/chilli-3.jpg",
+          "/products/chilli-1.JPG",
+          "/products/chilli-2.JPG",
+          "/products/chilli-3.JPG",
         ],
       },
       "Sour Dough": {
         model: <Jar />,
         images: [
-          "/products/sourdough.jpg",
-          "/products/sourdough2.jpg",
-          "/products/sourdough4.jpg",
+          "/products/sourdough.JPG",
+          "/products/sourdough2.JPG",
+          "/products/sourdough4.JPG",
         ],
       },
       "Pumpkin Bread": {
         model: <Jar />,
         images: [
-          "/products/pumpkin-bread.jpg",
-          "/products/pumpkin-bread-3.jpg",
+          "/products/pumpkin-bread.JPG",
+          "/products/pumpkin-bread-3.JPG",
         ],
       },
       "Bread Roll": {
         model: <Jar />,
         images: [
-          "/products/bread-roll.jpg",
-          "/products/bread-roll2.jpg",
-          "/products/bread-roll3.jpg",
-          "/products/bread-roll4.jpg",
+          "/products/bread-roll.JPG",
+          "/products/bread-roll2.JPG",
+          "/products/bread-roll3.JPG",
+          "/products/bread-roll4.JPG",
         ],
       },
       "Jollof Rice": {
         model: <Jar />,
         images: [
-          "/products/jollof-1.jpg",
-          "/products/jollof-2.jpg",
-          "/products/jollof-3.jpg",
+          "/products/jollof-1.JPG",
+          "/products/jollof-2.JPG",
+          "/products/jollof-3.JPG",
         ],
       },
     } satisfies Record<ProductKey, { model: ReactNode; images: string[] }>;
@@ -138,108 +139,110 @@ export default function Products() {
   const active = products[selectedProduct];
 
   return (
-    <main className="min-h-screen px-20 bg-[radial-gradient(circle,_#6DB86B,_#305230)]">
+    <main className="min-h-screen flex flex-col bg-[radial-gradient(circle,_#6DB86B,_#305230)]">
       <Navbar />
 
-      <section className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-10 py-10 lg:py-16">
-        <div className="flex flex-col lg:flex-row items-center lg:items-start justify-center gap-10 lg:gap-24">
-          {/* Product Menu */}
-          <div className="w-full lg:w-[340px]">
-            {/* Mobile: horizontally scrolling chips */}
-            <div className="lg:hidden">
-              <div className="flex gap-2 overflow-x-auto py-2 px-1 snap-x snap-mandatory scroll-px-10 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+      <section className="flex-1 flex items-center justify-center">
+        <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-10 py-10 lg:py-16">
+          <div className="flex flex-col lg:flex-row items-center lg:items-start justify-center gap-10 lg:gap-24">
+            {/* Product Menu */}
+            <div className="w-full lg:w-[340px] xl:w-96">
+              {/* Mobile: horizontally scrolling chips */}
+              <div className="lg:hidden">
+                <div className="flex gap-2 overflow-x-auto py-2 px-1 snap-x snap-mandatory scroll-px-10 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+                  {productList.map((product) => {
+                    const isActive = selectedProduct === product;
+
+                    return (
+                      <button
+                        key={product}
+                        ref={(el) => {
+                          chipRefs.current[product] = el;
+                        }}
+                        type="button"
+                        onClick={() => setSelectedProduct(product)}
+                        className={[
+                          "snap-center whitespace-nowrap rounded-full px-4 py-2 text-sm font-semibold transition",
+                          "border",
+                          "focus:outline-none focus:ring-2 focus:ring-white/40",
+                          isActive
+                            ? "bg-white text-black border-white"
+                            : "bg-transparent text-white border-white/60 hover:border-white",
+                        ].join(" ")}
+                      >
+                        {product}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Desktop: vertical list */}
+              <div className="hidden lg:flex lg:flex-col lg:gap-5">
                 {productList.map((product) => {
                   const isActive = selectedProduct === product;
 
                   return (
-                    <button
-                      key={product}
-                      ref={(el) => {
-                        chipRefs.current[product] = el;
-                      }}
-                      type="button"
-                      onClick={() => setSelectedProduct(product)}
-                      className={[
-                        "snap-center whitespace-nowrap rounded-full px-4 py-2 text-sm font-semibold transition",
-                        "border",
-                        "focus:outline-none focus:ring-2 focus:ring-white/40",
-                        isActive
-                          ? "bg-white text-black border-white"
-                          : "bg-transparent text-white border-white/60 hover:border-white",
-                      ].join(" ")}
-                    >
-                      {product}
-                    </button>
+                    <div key={product} className="w-auto lg:w-full">
+                      <button
+                        type="button"
+                        onClick={() => setSelectedProduct(product)}
+                        className={[
+                          "group relative w-full text-left font-bold tracking-tight transition",
+                          "focus:outline-none focus:ring-2 focus:ring-white/40 rounded-xl",
+                          "px-3 py-2 lg:px-0 lg:py-0",
+                          isActive
+                            ? "text-white"
+                            : "text-white/70 hover:text-white",
+                        ].join(" ")}
+                      >
+                        <span className="block text-5xl leading-tight">
+                          {product}
+                        </span>
+                      </button>
+
+                      <hr className="mt-3 border-white/50" />
+                    </div>
                   );
                 })}
               </div>
             </div>
 
-            {/* Desktop: vertical list */}
-            <div className="hidden lg:flex lg:flex-col lg:gap-5">
-              {productList.map((product) => {
-                const isActive = selectedProduct === product;
-
-                return (
-                  <div key={product} className="w-auto lg:w-full">
-                    <button
-                      type="button"
-                      onClick={() => setSelectedProduct(product)}
-                      className={[
-                        "group relative w-full text-left font-bold tracking-tight transition",
-                        "focus:outline-none focus:ring-2 focus:ring-white/40 rounded-xl",
-                        "px-3 py-2 lg:px-0 lg:py-0",
-                        isActive
-                          ? "text-white"
-                          : "text-white/70 hover:text-white",
-                      ].join(" ")}
-                    >
-                      <span className="block text-5xl leading-tight">
-                        {product}
-                      </span>
-                    </button>
-
-                    <hr className="mt-3 border-white/50" />
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Carousel */}
-          <div className="w-full lg:w-auto flex justify-center">
-            <Carousel
-              key={selectedProduct}
-              className="w-full sm:w-[80vw] lg:w-[30vw] max-w-2xl lg:max-w-md text-black"
-            >
-              <CarouselContent>
-                <CarouselItem>
-                  <div className="relative w-full h-[48vh] sm:h-[58vh] lg:h-[70vh] min-h-[340px] overflow-hidden rounded-md border border-white/20">
-                    {active.model}
-                  </div>
-                </CarouselItem>
-
-                {active.images.map((src, idx) => (
-                  <CarouselItem key={`${selectedProduct}-${src}-${idx}`}>
+            {/* Carousel */}
+            <div className="w-full lg:w-auto flex justify-center">
+              <Carousel
+                key={selectedProduct}
+                className="w-full sm:w-[80vw] lg:w-[30vw] max-w-2xl lg:max-w-md text-black"
+              >
+                <CarouselContent>
+                  <CarouselItem>
                     <div className="relative w-full h-[48vh] sm:h-[58vh] lg:h-[70vh] min-h-[340px] overflow-hidden rounded-md border border-white/20">
-                      <Image
-                        src={src}
-                        alt={`${selectedProduct} image ${idx + 1}`}
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 30vw"
-                        priority={
-                          selectedProduct === "Curry Paste" && idx === 0
-                        }
-                      />
+                      {active.model}
                     </div>
                   </CarouselItem>
-                ))}
-              </CarouselContent>
 
-              <CarouselPrevious />
-              <CarouselNext />
-            </Carousel>
+                  {active.images.map((src, idx) => (
+                    <CarouselItem key={`${selectedProduct}-${src}-${idx}`}>
+                      <div className="relative w-full h-[48vh] sm:h-[58vh] lg:h-[70vh] min-h-[340px] overflow-hidden rounded-md border border-white/20">
+                        <Image
+                          src={src}
+                          alt={`${selectedProduct} image ${idx + 1}`}
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 30vw"
+                          priority={
+                            selectedProduct === "Curry Paste" && idx === 0
+                          }
+                        />
+                      </div>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+
+                <CarouselPrevious />
+                <CarouselNext />
+              </Carousel>
+            </div>
           </div>
         </div>
       </section>
