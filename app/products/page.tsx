@@ -38,22 +38,25 @@ type MiscProduct = {
   tag?: string;
 };
 
+// TODO: get images for these
 const miscProducts: MiscProduct[] = [
   {
-    title: "Seasonal Garden Mix",
-    description: "A rotating mix of whatever is looking best this week.",
+    title: "Pecans",
+    description:
+      "An amazing snack on their own, or a great addition to your cooking.",
     image: "/products/misc-1.JPG",
-    tag: "Seasonal",
+    tag: "Small batch",
   },
   {
-    title: "Homemade Snacks",
-    description: "Small batch snacks made fresh.",
+    title: "Brownies",
+    description: "Rich, chocolatey, and perfect for sharing (or not).",
     image: "/products/misc-2.JPG",
     tag: "Small batch",
   },
   {
-    title: "Gift Bundle",
-    description: "A simple bundle for sharing with friends or family.",
+    title: "Sponge Cake",
+    description:
+      "Light, fluffy, and a perfect canvas for your favourite toppings.",
     image: "/products/misc-3.JPG",
     tag: "Gift",
   },
@@ -84,6 +87,7 @@ export default function Products() {
 
   const products = useMemo(() => {
     // TODO: add idle spin animation to 3D models
+    // TODO: add all images
     return {
       "Curry Paste": {
         model: <Jar />,
@@ -152,7 +156,6 @@ export default function Products() {
                 <div className="flex gap-2 overflow-x-auto py-2 px-1 snap-x snap-mandatory scroll-px-10 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
                   {productList.map((product) => {
                     const isActive = selectedProduct === product;
-
                     return (
                       <button
                         key={product}
@@ -238,7 +241,6 @@ export default function Products() {
                     </CarouselItem>
                   ))}
                 </CarouselContent>
-
                 <CarouselPrevious />
                 <CarouselNext />
               </Carousel>
@@ -291,12 +293,13 @@ export default function Products() {
                   </p>
                 ) : null}
 
-                <button
+                {/* TODO: Send to the bottom of the hero? */}
+                {/* <button
                   type="button"
                   className="mt-4 w-full rounded-xl bg-white text-black font-semibold py-2 hover:bg-white/90 transition"
                 >
                   Enquire
-                </button>
+                </button> */}
               </div>
             </div>
           ))}

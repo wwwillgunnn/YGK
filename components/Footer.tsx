@@ -28,9 +28,9 @@ export default function Footer() {
         <div className="bg-white border-t mt-8 lg:mt-10"></div>
         <div className="flex flex-col lg:flex-row gap-8 justify-between w-full">
           <div className="flex flex-row gap-8">
-            <a className="link">Privacy Policy</a>
+            {/* <a className="link">Privacy Policy</a>
             <a className="link">Terms of Service</a>
-            <a className="link">Cookie Policy</a>
+            <a className="link">Cookie Policy</a> */}
           </div>
           <p>
             Copyright © {new Date().getFullYear()} - All right reserved by

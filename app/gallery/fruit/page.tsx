@@ -1,3 +1,9 @@
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import Image from "next/image";
 
 const fruits = [
@@ -38,19 +44,44 @@ export default function FruitGalleryPage() {
 
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
         {fruits.map((fruit, index) => (
-          <div
-            key={`${fruit.src}-${index}`}
-            className="relative aspect-square overflow-hidden rounded-2xl bg-neutral-800"
-          >
-            <Image
-              src={fruit.src}
-              alt={fruit.alt}
-              fill
-              className="object-cover transition-transform duration-500 hover:scale-110"
-              sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, 25vw"
-              priority={index < 6}
-            />
-          </div>
+          <Dialog key={`${fruit.src}-${index}`}>
+            {/* Thumbnail */}
+            <DialogTrigger asChild>
+              <button className="relative aspect-square overflow-hidden rounded-2xl focus:outline-none focus:ring-2 focus:ring-white/60">
+                <Image
+                  src={fruit.src}
+                  alt={fruit.alt}
+                  fill
+                  className="object-cover transition-transform duration-500 hover:scale-110"
+                  sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, 25vw"
+                  priority={index < 8}
+                />
+              </button>
+            </DialogTrigger>
+
+            {/* Modal */}
+            <DialogContent className="w-auto max-w-[95vw] p-0 bg-transparent border-none shadow-none">
+              <div className="relative">
+                <Image
+                  src={fruit.src}
+                  alt={fruit.alt}
+                  width={900}
+                  height={1200}
+                  className="h-auto w-auto max-h-[90vh] max-w-[95vw] object-contain rounded-2xl"
+                  priority
+                />
+
+                {/* Floating Title */}
+                <div className="absolute top-4 left-4">
+                  <div className="bg-black/50 backdrop-blur-lg px-5 py-2 rounded-2xl shadow-lg">
+                    <DialogTitle className="text-sm md:text-base font-medium text-white">
+                      {fruit.alt}
+                    </DialogTitle>
+                  </div>
+                </div>
+              </div>
+            </DialogContent>
+          </Dialog>
         ))}
       </div>
     </section>

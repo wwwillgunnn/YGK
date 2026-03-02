@@ -13,7 +13,7 @@ export default function about_us() {
               alt="Yaa's Garden Kitchen Fresh Produce"
               width={450}
               height={350}
-              className="mt-4 rounded-md shadow-lg"
+              className="mt-4 rounded-md shadow-lg transition-transform duration-200 hover:animate-shake"
             />
           </figure>
 
