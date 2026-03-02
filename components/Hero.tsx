@@ -3,9 +3,9 @@
 import { useRef, useLayoutEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Button } from "@/components/ui/button";
 import Jar from "@/components/assets/Jar";
 import Navbar from "@/components/Navbar";
-import { Button } from "@/components/ui/button";
 import Image from "next/image";
 
 export default function Hero() {
@@ -15,7 +15,7 @@ export default function Hero() {
 
   // TODO: Work on all screen sizes
   useLayoutEffect(() => {
-    // Function to check if viewport is large enough
+    // Check if viewport is large enough
     const checkViewport = () => {
       if (window.innerWidth <= 1024) {
         // Disable scroll animations if viewport is not large enough
@@ -25,11 +25,9 @@ export default function Hero() {
       return true;
     };
 
-    // Register the ScrollTrigger plugin
-    gsap.registerPlugin(ScrollTrigger);
     if (!checkViewport()) return; // Exit if viewport is small
 
-    // Initial scale on jar
+    gsap.registerPlugin(ScrollTrigger);
     gsap.to(jarRef.current, {
       scale: 1.2,
       markers: false,
@@ -60,7 +58,7 @@ export default function Hero() {
         ease: "none",
         transformOrigin: "50% 50%",
       },
-      0 // align with the same start of timeline 1
+      0, // align with the same start of timeline 1
     );
 
     const tl2 = gsap.timeline({
@@ -88,7 +86,7 @@ export default function Hero() {
         ease: "none",
         transformOrigin: "50% 50%",
       },
-      0
+      0,
     );
   }, []);
 

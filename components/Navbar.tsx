@@ -76,7 +76,7 @@ export default function Navbar() {
           <Link href="/account" className="cursor-pointer">
             <MdAccountCircle size={32} className="hover:text-[#422323]" />
           </Link>
-          <Link href="/bag" className="cursor-pointer">
+          <Link href="/cart" className="cursor-pointer">
             <MdShoppingCart size={32} className="hover:text-[#422323]" />
           </Link>
         </div>
@@ -152,16 +152,16 @@ export default function Navbar() {
 
                   <SheetClose asChild>
                     <Link
-                      href="/bag"
+                      href="/cart"
                       className={[
                         "flex items-center gap-3 text-lg font-semibold",
-                        isActivePath(pathname, "/bag")
+                        isActivePath(pathname, "/cart")
                           ? "text-[#422323]"
                           : "hover:text-[#422323]",
                       ].join(" ")}
                     >
                       <MdShoppingCart size={26} />
-                      Bag
+                      Cart
                     </Link>
                   </SheetClose>
                 </div>

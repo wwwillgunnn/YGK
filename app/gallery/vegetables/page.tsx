@@ -1,13 +1,6 @@
-"use client";
-
-import { useState } from "react";
 import Image from "next/image";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import { DialogTrigger } from "@radix-ui/react-dialog";
 
 const vegetables = [
   // Tomatoes
@@ -145,16 +138,6 @@ const vegetables = [
 ];
 
 export default function VegetableGalleryPage() {
-  const [open, setOpen] = useState(false);
-  const [selected, setSelected] = useState<{ src: string; alt: string } | null>(
-    null,
-  );
-
-  const onPick = (veg: { src: string; alt: string }) => {
-    setSelected(veg);
-    setOpen(true);
-  };
-
   return (
     <section className="w-full px-6">
       <header className="mb-12 text-center">
@@ -169,53 +152,46 @@ export default function VegetableGalleryPage() {
 
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
         {vegetables.map((veg, index) => (
-          <button
-            key={`${veg.src}-${index}`}
-            type="button"
-            onClick={() => onPick(veg)}
-            className="relative aspect-square overflow-hidden rounded-2xl bg-neutral-800 text-left focus:outline-none focus:ring-2 focus:ring-white/60"
-            aria-label={`Open ${veg.alt}`}
-          >
-            <Image
-              src={veg.src}
-              alt={veg.alt}
-              fill
-              className="object-cover transition-transform duration-500 hover:scale-110"
-              sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, 25vw"
-              priority={index < 8}
-            />
-          </button>
+          <Dialog key={`${veg.src}-${index}`}>
+            {/* Thumbnail */}
+            <DialogTrigger asChild>
+              <button className="relative aspect-square overflow-hidden rounded-2xl focus:outline-none focus:ring-2 focus:ring-white/60">
+                <Image
+                  src={veg.src}
+                  alt={veg.alt}
+                  fill
+                  className="object-cover transition-transform duration-500 hover:scale-110"
+                  sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, 25vw"
+                  priority={index < 8}
+                />
+              </button>
+            </DialogTrigger>
+
+            {/* Modal */}
+            <DialogContent className="w-auto max-w-[95vw] p-0 bg-transparent border-none shadow-none">
+              <div className="relative">
+                <Image
+                  src={veg.src}
+                  alt={veg.alt}
+                  width={900}
+                  height={1200}
+                  className="h-auto w-auto max-h-[90vh] max-w-[95vw] object-contain rounded-2xl"
+                  priority
+                />
+
+                {/* Floating Title */}
+                <div className="absolute top-4 left-4">
+                  <div className="bg-black/50 backdrop-blur-lg px-5 py-2 rounded-2xl shadow-lg">
+                    <DialogTitle className="text-sm md:text-base font-medium text-white">
+                      {veg.alt}
+                    </DialogTitle>
+                  </div>
+                </div>
+              </div>
+            </DialogContent>
+          </Dialog>
         ))}
       </div>
-
-      <Dialog
-        open={open}
-        onOpenChange={(v) => {
-          setOpen(v);
-          if (!v) setSelected(null);
-        }}
-      >
-        <DialogContent className="max-w-5xl border-white/10 bg-neutral-950 text-white">
-          <DialogHeader>
-            <DialogTitle className="text-base sm:text-lg">
-              {selected?.alt ?? "Photo"}
-            </DialogTitle>
-          </DialogHeader>
-
-          <div className="relative w-full aspect-[4/3] sm:aspect-[16/10] md:aspect-[16/9] overflow-hidden rounded-xl bg-black/40">
-            {selected ? (
-              <Image
-                src={selected.src}
-                alt={selected.alt}
-                fill
-                className="object-contain"
-                sizes="(max-width: 768px) 95vw, 1000px"
-                priority
-              />
-            ) : null}
-          </div>
-        </DialogContent>
-      </Dialog>
     </section>
   );
 }
