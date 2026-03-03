@@ -68,6 +68,12 @@ const miscProducts: MiscProduct[] = [
   },
 ];
 
+type CartItem = {
+  name: ProductKey;
+  price: number;
+  quantity: number;
+};
+
 export default function Products() {
   const [selectedProduct, setSelectedProduct] =
     useState<ProductKey>("Curry Paste");
@@ -91,6 +97,9 @@ export default function Products() {
     return {
       "Curry Paste": {
         model: <Jar />,
+        price: 12.99,
+        stock: 24,
+        description: "Rich, aromatic curry paste made in small batches.",
         images: [
           "/products/curry-1.JPG",
           "/products/curry-2.JPG",
@@ -99,6 +108,9 @@ export default function Products() {
       },
       "Chilli Paste": {
         model: <ChilliJar />,
+        price: 0,
+        stock: 0,
+        description: "",
         images: [
           "/products/chilli-1.JPG",
           "/products/chilli-2.JPG",
@@ -107,6 +119,9 @@ export default function Products() {
       },
       "Sour Dough": {
         model: <Jar />,
+        price: 0,
+        stock: 0,
+        description: "",
         images: [
           "/products/sourdough.JPG",
           "/products/sourdough2.JPG",
@@ -115,6 +130,9 @@ export default function Products() {
       },
       "Pumpkin Bread": {
         model: <Jar />,
+        price: 0,
+        stock: 0,
+        description: "",
         images: [
           "/products/pumpkin-bread.JPG",
           "/products/pumpkin-bread-3.JPG",
@@ -122,6 +140,9 @@ export default function Products() {
       },
       "Bread Roll": {
         model: <Jar />,
+        price: 0,
+        stock: 0,
+        description: "",
         images: [
           "/products/bread-roll.JPG",
           "/products/bread-roll2.JPG",
@@ -131,16 +152,54 @@ export default function Products() {
       },
       "Jollof Rice": {
         model: <Jar />,
+        price: 0,
+        stock: 0,
+        description: "",
         images: [
           "/products/jollof-1.JPG",
           "/products/jollof-2.JPG",
           "/products/jollof-3.JPG",
         ],
       },
-    } satisfies Record<ProductKey, { model: ReactNode; images: string[] }>;
+    } satisfies Record<
+      ProductKey,
+      {
+        model: ReactNode;
+        price: number;
+        stock: number;
+        description: string;
+        images: string[];
+      }
+    >;
   }, []);
 
   const active = products[selectedProduct];
+  const [quantity, setQuantity] = useState(1);
+  useEffect(() => {
+    setQuantity(1);
+  }, [selectedProduct]);
+
+  const addToCart = (product: ProductKey, quantity: number) => {
+    const existingCart: CartItem[] = JSON.parse(
+      localStorage.getItem("cart") || "[]",
+    );
+
+    const productData = products[product];
+
+    const existingItem = existingCart.find((item) => item.name === product);
+
+    if (existingItem) {
+      existingItem.quantity += quantity;
+    } else {
+      existingCart.push({
+        name: product,
+        price: productData.price,
+        quantity,
+      });
+    }
+
+    localStorage.setItem("cart", JSON.stringify(existingCart));
+  };
 
   return (
     <main className="min-h-screen flex flex-col bg-[radial-gradient(circle,_#6DB86B,_#305230)]">
@@ -181,7 +240,7 @@ export default function Products() {
               </div>
 
               {/* Desktop: vertical list */}
-              <div className="hidden lg:flex lg:flex-col lg:gap-5">
+              <div className="hidden lg:flex lg:flex-col lg:gap-5 transition-all duration-300 ease-in-out">
                 {productList.map((product) => {
                   const isActive = selectedProduct === product;
 
@@ -192,7 +251,7 @@ export default function Products() {
                         onClick={() => setSelectedProduct(product)}
                         className={[
                           "group relative w-full text-left font-bold tracking-tight transition",
-                          "focus:outline-none focus:ring-2 focus:ring-white/40 rounded-xl",
+                          "focus:outline-none focus:ring-2 focus:ring-transparent rounded-xl",
                           "px-3 py-2 lg:px-0 lg:py-0",
                           isActive
                             ? "text-white"
@@ -204,6 +263,62 @@ export default function Products() {
                         </span>
                       </button>
 
+                      {/* Only show details for selected product */}
+                      {isActive && (
+                        <div className="mt-6 text-white max-w-md">
+                          <p className="mt-2 text-white/80">
+                            {products[product].description}
+                          </p>
+
+                          <div className="mt-4 flex items-center justify-between">
+                            <span className="text-2xl font-semibold">
+                              ${products[product].price.toFixed(2)}
+                            </span>
+                            <span className="text-sm text-white/70">
+                              {products[product].stock} in stock
+                            </span>
+                          </div>
+
+                          {/* Quantity Selector */}
+                          <div className="mt-4 flex items-center gap-4">
+                            <button
+                              onClick={() =>
+                                setQuantity((q) => Math.max(1, q - 1))
+                              }
+                              className="px-3 py-1 bg-white/10 rounded-md hover:bg-white/20"
+                            >
+                              -
+                            </button>
+
+                            <span className="text-lg font-semibold">
+                              {quantity}
+                            </span>
+
+                            <button
+                              onClick={() =>
+                                setQuantity((q) =>
+                                  Math.min(products[product].stock, q + 1),
+                                )
+                              }
+                              className="px-3 py-1 bg-white/10 rounded-md hover:bg-white/20"
+                            >
+                              +
+                            </button>
+                          </div>
+
+                          {/* Add to Cart */}
+                          <button
+                            className="mt-6 w-full rounded-xl bg-white text-black font-semibold py-3 hover:bg-white/90 transition"
+                            onClick={() => {
+                              addToCart(product, quantity);
+                              console.log("Add to cart:", product, quantity);
+                            }}
+                          >
+                            Add {quantity} to Cart
+                          </button>
+                        </div>
+                      )}
+
                       <hr className="mt-3 border-white/50" />
                     </div>
                   );
@@ -212,7 +327,7 @@ export default function Products() {
             </div>
 
             {/* Carousel */}
-            <div className="w-full lg:w-auto flex justify-center">
+            <div className="w-full lg:w-auto flex flex-col justify-center">
               <Carousel
                 key={selectedProduct}
                 className="w-full sm:w-[80vw] lg:w-[30vw] max-w-2xl lg:max-w-md text-black"

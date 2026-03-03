@@ -1,8 +1,23 @@
+"use client";
+
 import Navbar from "@/components/Navbar";
 import { Card } from "@/components/ui/card";
 import React from "react";
+import { useEffect, useState } from "react";
 
-export default function Bag() {
+type CartItem = {
+  name: string;
+  price: number;
+  quantity: number;
+};
+
+export default function Cart() {
+  const [cart, setCart] = useState<CartItem[]>([]);
+  useEffect(() => {
+    const storedCart = JSON.parse(localStorage.getItem("cart") || "[]");
+    setCart(storedCart);
+  }, []);
+
   return (
     <main className="min-h-screen bg-[radial-gradient(circle,_#6DB86B,_#305230)] text-white">
       <Navbar />
@@ -112,23 +127,43 @@ export default function Bag() {
               </h2>
 
               <div className="space-y-6 text-sm">
-                <OrderRow name="Premium Wireless Headphones" price="$199.99" />
-                <OrderRow name="Ergonomic Office Chair" price="$299.99" />
-                <OrderRow name="Smart Water Bottle" price="$79.98" />
+                {cart.map((item) => (
+                  <OrderRow
+                    key={item.name}
+                    name={`${item.name} x${item.quantity}`}
+                    price={`$${(item.price * item.quantity).toFixed(2)}`}
+                  />
+                ))}
 
                 <div className="border-t pt-6 space-y-2 text-white/70">
-                  <SummaryRow label="Subtotal" value="$579.96" />
-                  <SummaryRow label="Shipping" value="$15.99" />
-                  <SummaryRow label="Tax" value="$46.40" />
+                  <SummaryRow
+                    label="Subtotal"
+                    value={`$${cart
+                      .reduce(
+                        (acc, item) => acc + item.price * item.quantity,
+                        0,
+                      )
+                      .toFixed(2)}`}
+                  />
+                  <SummaryRow label="Shipping" value="$0.00" />
+                  <SummaryRow label="Tax" value="$0.00" />
                 </div>
 
                 <div className="border-t pt-6 flex justify-between font-semibold text-base text-white">
                   <span>Total</span>
-                  <span>$642.35</span>
+                  <span>
+                    $
+                    {cart
+                      .reduce(
+                        (acc, item) => acc + item.price * item.quantity,
+                        0,
+                      )
+                      .toFixed(2)}
+                  </span>
                 </div>
 
-                <button className="w-full bg-[#422323] text-white backdrop-blur-md border border-white/30 py-3 rounded-xl mt-6 hover:opacity-90 transition">
-                  Complete Order — $642.35
+                <button className="w-full bg-[#422323] text-white py-3 rounded-xl mt-6 hover:opacity-90 transition">
+                  Complete Order
                 </button>
               </div>
             </Card>
