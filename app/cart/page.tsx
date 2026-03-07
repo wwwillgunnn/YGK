@@ -4,8 +4,10 @@ import Navbar from "@/components/Navbar";
 import { Card } from "@/components/ui/card";
 import React from "react";
 import { useEffect, useState } from "react";
+import { Trash2 } from "lucide-react";
 
 type CartItem = {
+  id: string;
   name: string;
   price: number;
   quantity: number;
@@ -17,6 +19,17 @@ export default function Cart() {
     const storedCart = JSON.parse(localStorage.getItem("cart") || "[]");
     setCart(storedCart);
   }, []);
+
+  const subtotal = cart.reduce(
+    (acc, item) => acc + item.price * item.quantity,
+    0,
+  );
+
+  function removeItem(name: string) {
+    const updatedCart = cart.filter((item) => item.name !== name);
+    setCart(updatedCart);
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+  }
 
   return (
     <main className="min-h-screen bg-[radial-gradient(circle,_#6DB86B,_#305230)] text-white">
@@ -126,46 +139,43 @@ export default function Cart() {
                 Order Summary
               </h2>
 
-              <div className="space-y-6 text-sm">
-                {cart.map((item) => (
-                  <OrderRow
-                    key={item.name}
-                    name={`${item.name} x${item.quantity}`}
-                    price={`$${(item.price * item.quantity).toFixed(2)}`}
-                  />
-                ))}
-
-                <div className="border-t pt-6 space-y-2 text-white/70">
-                  <SummaryRow
-                    label="Subtotal"
-                    value={`$${cart
-                      .reduce(
-                        (acc, item) => acc + item.price * item.quantity,
-                        0,
-                      )
-                      .toFixed(2)}`}
-                  />
-                  <SummaryRow label="Shipping" value="$0.00" />
-                  <SummaryRow label="Tax" value="$0.00" />
+              {cart.length === 0 ? (
+                <div className="text-center py-10 text-white/70">
+                  <p className="text-lg font-medium">Your cart is empty</p>
+                  <p className="text-sm mt-2">
+                    Add some items before checking out.
+                  </p>
                 </div>
+              ) : (
+                <div className="space-y-6 text-sm">
+                  {cart.map((item) => (
+                    <OrderRow
+                      key={item.name}
+                      name={`${item.name} x${item.quantity}`}
+                      price={`$${(item.price * item.quantity).toFixed(2)}`}
+                      onRemove={() => removeItem(item.name)}
+                    />
+                  ))}
 
-                <div className="border-t pt-6 flex justify-between font-semibold text-base text-white">
-                  <span>Total</span>
-                  <span>
-                    $
-                    {cart
-                      .reduce(
-                        (acc, item) => acc + item.price * item.quantity,
-                        0,
-                      )
-                      .toFixed(2)}
-                  </span>
+                  <div className="border-t pt-6 space-y-2 text-white/70">
+                    <SummaryRow
+                      label="Subtotal"
+                      value={`$${subtotal.toFixed(2)}`}
+                    />
+                    <SummaryRow label="Shipping" value="$0.00" />
+                    <SummaryRow label="Tax" value="$0.00" />
+                  </div>
+
+                  <div className="border-t pt-6 flex justify-between font-semibold text-base text-white">
+                    <span>Total</span>
+                    <span>${subtotal.toFixed(2)}</span>
+                  </div>
+
+                  <button className="w-full bg-[#422323] text-white py-3 rounded-xl mt-6 hover:opacity-90 transition">
+                    Complete Order
+                  </button>
                 </div>
-
-                <button className="w-full bg-[#422323] text-white py-3 rounded-xl mt-6 hover:opacity-90 transition">
-                  Complete Order
-                </button>
-              </div>
+              )}
             </Card>
           </div>
         </div>
@@ -202,15 +212,29 @@ function Input({ label, placeholder }: { label: string; placeholder: string }) {
   );
 }
 
-function OrderRow({ name, price }: { name: string; price: string }) {
+function OrderRow({
+  name,
+  price,
+  onRemove,
+}: {
+  name: string;
+  price: string;
+  onRemove: () => void;
+}) {
   return (
-    <div className="flex justify-between text-white/80">
+    <div className="flex justify-between items-center text-white/80">
       <span>{name}</span>
-      <span>{price}</span>
+
+      <div className="flex items-center gap-3">
+        <span>{price}</span>
+
+        <button onClick={onRemove}>
+          <Trash2 size={16} />
+        </button>
+      </div>
     </div>
   );
 }
-
 function SummaryRow({ label, value }: { label: string; value: string }) {
   return (
     <div className="flex justify-between text-white/70">

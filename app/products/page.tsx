@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { ReactNode } from "react";
 import Navbar from "@/components/Navbar";
 import Image from "next/image";
@@ -13,22 +13,96 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { Button } from "@/components/ui/button";
 
-type ProductKey =
-  | "Curry Paste"
-  | "Chilli Paste"
-  | "Sour Dough"
-  | "Pumpkin Bread"
-  | "Bread Roll"
-  | "Jollof Rice";
+// TODO: add idle spin animation to 3D models
+// TODO: add all images
+type Product = {
+  id: string;
+  name: string;
+  model: ReactNode;
+  price: number;
+  stock: number;
+  description: string;
+  images: string[];
+};
 
-const productList: ProductKey[] = [
-  "Curry Paste",
-  "Chilli Paste",
-  "Sour Dough",
-  "Pumpkin Bread",
-  "Bread Roll",
-  "Jollof Rice",
+const products: Product[] = [
+  {
+    id: "curry-paste",
+    name: "Curry Paste",
+    model: <Jar />,
+    price: 12.99,
+    stock: 24,
+    description: "Rich, aromatic curry paste made in small batches.",
+    images: [
+      "/products/curry-1.JPG",
+      "/products/curry-2.JPG",
+      "/products/curry-3.JPG",
+    ],
+  },
+  {
+    id: "chilli-paste",
+    name: "Chilli Paste",
+    model: <ChilliJar />,
+    price: 0,
+    stock: 0,
+    description: "",
+    images: [
+      "/products/chilli-1.JPG",
+      "/products/chilli-2.JPG",
+      "/products/chilli-3.JPG",
+    ],
+  },
+  {
+    id: "sourdough",
+    name: "Sour Dough",
+    model: <Jar />,
+    price: 0,
+    stock: 0,
+    description: "",
+    images: [
+      "/products/sourdough.JPG",
+      "/products/sourdough2.JPG",
+      "/products/sourdough4.JPG",
+    ],
+  },
+  {
+    id: "pumpkin-bread",
+    name: "Pumpkin Bread",
+    model: <Jar />,
+    price: 0,
+    stock: 0,
+    description: "",
+    images: ["/products/pumpkin-bread.JPG", "/products/pumpkin-bread-3.JPG"],
+  },
+  {
+    id: "bread-roll",
+    name: "Bread Roll",
+    model: <Jar />,
+    price: 0,
+    stock: 0,
+    description: "",
+    images: [
+      "/products/bread-roll.JPG",
+      "/products/bread-roll2.JPG",
+      "/products/bread-roll3.JPG",
+      "/products/bread-roll4.JPG",
+    ],
+  },
+  {
+    id: "jollof-rice",
+    name: "Jollof Rice",
+    model: <Jar />,
+    price: 0,
+    stock: 0,
+    description: "",
+    images: [
+      "/products/jollof-1.JPG",
+      "/products/jollof-2.JPG",
+      "/products/jollof-3.JPG",
+    ],
+  },
 ];
 
 type MiscProduct = {
@@ -69,19 +143,23 @@ const miscProducts: MiscProduct[] = [
 ];
 
 type CartItem = {
-  name: ProductKey;
+  id: string;
+  name: string;
   price: number;
   quantity: number;
 };
 
 export default function Products() {
-  const [selectedProduct, setSelectedProduct] =
-    useState<ProductKey>("Curry Paste");
+  const [selectedProductId, setSelectedProductId] = useState("curry-paste");
+  const [addedProductId, setAddedProductId] = useState<string | null>(null);
+  const [quantity, setQuantity] = useState(1);
 
   const chipRefs = useRef<Record<string, HTMLButtonElement | null>>({});
 
+  const activeProduct = products.find((p) => p.id === selectedProductId)!;
+
   useEffect(() => {
-    const el = chipRefs.current[selectedProduct];
+    const el = chipRefs.current[selectedProductId];
     if (!el) return;
 
     el.scrollIntoView({
@@ -89,118 +167,32 @@ export default function Products() {
       inline: "center",
       block: "nearest",
     });
-  }, [selectedProduct]);
+  }, [selectedProductId]);
 
-  const products = useMemo(() => {
-    // TODO: add idle spin animation to 3D models
-    // TODO: add all images
-    return {
-      "Curry Paste": {
-        model: <Jar />,
-        price: 12.99,
-        stock: 24,
-        description: "Rich, aromatic curry paste made in small batches.",
-        images: [
-          "/products/curry-1.JPG",
-          "/products/curry-2.JPG",
-          "/products/curry-3.JPG",
-        ],
-      },
-      "Chilli Paste": {
-        model: <ChilliJar />,
-        price: 0,
-        stock: 0,
-        description: "",
-        images: [
-          "/products/chilli-1.JPG",
-          "/products/chilli-2.JPG",
-          "/products/chilli-3.JPG",
-        ],
-      },
-      "Sour Dough": {
-        model: <Jar />,
-        price: 0,
-        stock: 0,
-        description: "",
-        images: [
-          "/products/sourdough.JPG",
-          "/products/sourdough2.JPG",
-          "/products/sourdough4.JPG",
-        ],
-      },
-      "Pumpkin Bread": {
-        model: <Jar />,
-        price: 0,
-        stock: 0,
-        description: "",
-        images: [
-          "/products/pumpkin-bread.JPG",
-          "/products/pumpkin-bread-3.JPG",
-        ],
-      },
-      "Bread Roll": {
-        model: <Jar />,
-        price: 0,
-        stock: 0,
-        description: "",
-        images: [
-          "/products/bread-roll.JPG",
-          "/products/bread-roll2.JPG",
-          "/products/bread-roll3.JPG",
-          "/products/bread-roll4.JPG",
-        ],
-      },
-      "Jollof Rice": {
-        model: <Jar />,
-        price: 0,
-        stock: 0,
-        description: "",
-        images: [
-          "/products/jollof-1.JPG",
-          "/products/jollof-2.JPG",
-          "/products/jollof-3.JPG",
-        ],
-      },
-    } satisfies Record<
-      ProductKey,
-      {
-        model: ReactNode;
-        price: number;
-        stock: number;
-        description: string;
-        images: string[];
-      }
-    >;
-  }, []);
-
-  const active = products[selectedProduct];
-  const [quantity, setQuantity] = useState(1);
   useEffect(() => {
     setQuantity(1);
-  }, [selectedProduct]);
+  }, [selectedProductId]);
 
-  const addToCart = (product: ProductKey, quantity: number) => {
+  const addToCart = (product: Product, quantity: number) => {
     const existingCart: CartItem[] = JSON.parse(
       localStorage.getItem("cart") || "[]",
     );
 
-    const productData = products[product];
-
-    const existingItem = existingCart.find((item) => item.name === product);
+    const existingItem = existingCart.find((item) => item.id === product.id);
 
     if (existingItem) {
       existingItem.quantity += quantity;
     } else {
       existingCart.push({
-        name: product,
-        price: productData.price,
+        id: product.id,
+        name: product.name,
+        price: product.price,
         quantity,
       });
     }
 
     localStorage.setItem("cart", JSON.stringify(existingCart));
   };
-
   return (
     <main className="min-h-screen flex flex-col bg-[radial-gradient(circle,_#6DB86B,_#305230)]">
       <Navbar />
@@ -213,16 +205,17 @@ export default function Products() {
               {/* Mobile: horizontally scrolling chips */}
               <div className="lg:hidden">
                 <div className="flex gap-2 overflow-x-auto py-2 px-1 snap-x snap-mandatory scroll-px-10 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
-                  {productList.map((product) => {
-                    const isActive = selectedProduct === product;
+                  {products.map((product) => {
+                    const isActive = selectedProductId === product.id;
+
                     return (
                       <button
-                        key={product}
+                        key={product.id}
                         ref={(el) => {
-                          chipRefs.current[product] = el;
+                          chipRefs.current[product.id] = el;
                         }}
                         type="button"
-                        onClick={() => setSelectedProduct(product)}
+                        onClick={() => setSelectedProductId(product.id)}
                         className={[
                           "snap-center whitespace-nowrap rounded-full px-4 py-2 text-sm font-semibold transition",
                           "border",
@@ -232,7 +225,7 @@ export default function Products() {
                             : "bg-transparent text-white border-white/60 hover:border-white",
                         ].join(" ")}
                       >
-                        {product}
+                        {product.name}
                       </button>
                     );
                   })}
@@ -241,14 +234,14 @@ export default function Products() {
 
               {/* Desktop: vertical list */}
               <div className="hidden lg:flex lg:flex-col lg:gap-5 transition-all duration-300 ease-in-out">
-                {productList.map((product) => {
-                  const isActive = selectedProduct === product;
+                {products.map((product) => {
+                  const isActive = selectedProductId === product.id;
 
                   return (
-                    <div key={product} className="w-auto lg:w-full">
+                    <div key={product.id} className="w-auto lg:w-full">
                       <button
                         type="button"
-                        onClick={() => setSelectedProduct(product)}
+                        onClick={() => setSelectedProductId(product.id)}
                         className={[
                           "group relative w-full text-left font-bold tracking-tight transition",
                           "focus:outline-none focus:ring-2 focus:ring-transparent rounded-xl",
@@ -259,63 +252,68 @@ export default function Products() {
                         ].join(" ")}
                       >
                         <span className="block text-5xl leading-tight">
-                          {product}
+                          {product.name}
                         </span>
                       </button>
 
-                      {/* Only show details for selected product */}
                       {isActive && (
                         <div className="mt-6 text-white max-w-md">
                           <p className="mt-2 text-white/80">
-                            {products[product].description}
+                            {product.description}
                           </p>
 
                           <div className="mt-4 flex items-center justify-between">
                             <span className="text-2xl font-semibold">
-                              ${products[product].price.toFixed(2)}
+                              ${product.price.toFixed(2)}
                             </span>
                             <span className="text-sm text-white/70">
-                              {products[product].stock} in stock
+                              {product.stock} in stock
                             </span>
                           </div>
 
                           {/* Quantity Selector */}
                           <div className="mt-4 flex items-center gap-4">
-                            <button
+                            <Button
                               onClick={() =>
                                 setQuantity((q) => Math.max(1, q - 1))
                               }
                               className="px-3 py-1 bg-white/10 rounded-md hover:bg-white/20"
                             >
                               -
-                            </button>
+                            </Button>
 
                             <span className="text-lg font-semibold">
                               {quantity}
                             </span>
 
-                            <button
+                            <Button
                               onClick={() =>
                                 setQuantity((q) =>
-                                  Math.min(products[product].stock, q + 1),
+                                  Math.min(product.stock, q + 1),
                                 )
                               }
                               className="px-3 py-1 bg-white/10 rounded-md hover:bg-white/20"
                             >
                               +
-                            </button>
+                            </Button>
                           </div>
 
                           {/* Add to Cart */}
-                          <button
+                          <Button
                             className="mt-6 w-full rounded-xl bg-white text-black font-semibold py-3 hover:bg-white/90 transition"
                             onClick={() => {
                               addToCart(product, quantity);
-                              console.log("Add to cart:", product, quantity);
+                              setAddedProductId(product.id);
+
+                              setTimeout(() => {
+                                setAddedProductId(null);
+                              }, 2000);
                             }}
                           >
-                            Add {quantity} to Cart
-                          </button>
+                            {addedProductId === product.id
+                              ? "Added to cart!"
+                              : `Add ${quantity} to Cart`}
+                          </Button>
                         </div>
                       )}
 
@@ -329,27 +327,27 @@ export default function Products() {
             {/* Carousel */}
             <div className="w-full lg:w-auto flex flex-col justify-center">
               <Carousel
-                key={selectedProduct}
+                key={selectedProductId}
                 className="w-full sm:w-[80vw] lg:w-[30vw] max-w-2xl lg:max-w-md text-black"
               >
                 <CarouselContent>
                   <CarouselItem>
                     <div className="relative w-full h-[48vh] sm:h-[58vh] lg:h-[70vh] min-h-[340px] overflow-hidden rounded-md border border-white/20">
-                      {active.model}
+                      {activeProduct.model}
                     </div>
                   </CarouselItem>
 
-                  {active.images.map((src, idx) => (
-                    <CarouselItem key={`${selectedProduct}-${src}-${idx}`}>
+                  {activeProduct.images.map((src, idx) => (
+                    <CarouselItem key={`${selectedProductId}-${src}-${idx}`}>
                       <div className="relative w-full h-[48vh] sm:h-[58vh] lg:h-[70vh] min-h-[340px] overflow-hidden rounded-md border border-white/20">
                         <Image
                           src={src}
-                          alt={`${selectedProduct} image ${idx + 1}`}
+                          alt={`${activeProduct.name} image ${idx + 1}`}
                           fill
                           className="object-cover"
                           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 30vw"
                           priority={
-                            selectedProduct === "Curry Paste" && idx === 0
+                            selectedProductId === "Curry Paste" && idx === 0
                           }
                         />
                       </div>
