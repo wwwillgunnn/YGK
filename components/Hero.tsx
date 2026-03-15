@@ -28,6 +28,7 @@ export default function Hero() {
     if (!checkViewport()) return; // Exit if viewport is small
 
     gsap.registerPlugin(ScrollTrigger);
+
     gsap.to(jarRef.current, {
       scale: 1.2,
       markers: false,
@@ -44,8 +45,9 @@ export default function Hero() {
       },
     });
 
+    // Position in the middle of the feature section
     tl1.to(jarRef.current, {
-      x: "-20vw",
+      x: "-22vw",
       y: "120vh",
       rotation: 15,
       scale: 1,
@@ -58,7 +60,7 @@ export default function Hero() {
         ease: "none",
         transformOrigin: "50% 50%",
       },
-      0, // align with the same start of timeline 1
+      0,
     );
 
     const tl2 = gsap.timeline({
@@ -72,9 +74,10 @@ export default function Hero() {
       },
     });
 
+    // position around other 3D objects
     tl2.to(jarRef.current, {
-      x: "-18vw",
-      y: "220vh",
+      x: "-22vw",
+      y: "230vh",
       rotation: 0,
       scale: 1,
     });
@@ -92,16 +95,14 @@ export default function Hero() {
 
   return (
     <article className="min-h-[80vh] w-full" id="top-viewport">
-      <header>
-        <Navbar />
-      </header>
+      <Navbar />
 
-      <section className="flex flex-col lg:flex-row items-center justify-center md:gap-10 mt-20 mx-10 lg:mx-20 lg:mt-0">
-        <aside className="flex flex-col gap-8 lg:p-10 text-center lg:text-left -translate-y-10">
+      <section className="flex flex-col items-center justify-center mt-20 mx-10 -translate-y-20 translate-x-20 md:gap-10 lg:flex-row lg:mx-20 lg:mt-0">
+        <aside className="flex flex-col gap-8 text-center lg:p-10 lg:text-left">
           <div className="flex flex-col gap-2">
             <h1 className="text-3xl md:text-4xl lg:text-6xl 2xl:text-7xl font-bold">
-              <span style={{ color: "#422323" }}>Fresh</span> Curry Paste <br />
-              Made With <span style={{ color: "#422323" }}>Love</span>
+              <span className="text-[#422323]">Fresh</span> Curry Paste <br />
+              Made With <span className="text-[#422323]">Love</span>
             </h1>
             <p className="text-sm md:text-base lg:text-lg md:w-[50ch] lg:w-[48ch]">
               At Yaa&apos;s Garden Kitchen, we grow the freshest produce and use
@@ -127,7 +128,7 @@ export default function Hero() {
         </aside>
 
         <figure
-          className="h-[50vh] md:h-[70vh] lg:h-[100vh] w-full lg:w-[40vw] z-10"
+          className="w-full h-[50vh] z-10 -translate-x-20 md:h-[70vh] lg:w-[40vw] lg:h-[100vh]"
           ref={jarRef}
         >
           <Jar />

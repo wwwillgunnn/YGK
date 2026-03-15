@@ -33,7 +33,7 @@ const products: Product[] = [
     name: "Curry Paste",
     model: <Jar />,
     price: 12.99,
-    stock: 24,
+    stock: 999,
     description: "Rich, aromatic curry paste made in small batches.",
     images: [
       "/products/curry-1.JPG",
@@ -46,7 +46,7 @@ const products: Product[] = [
     name: "Chilli Paste",
     model: <ChilliJar />,
     price: 0,
-    stock: 0,
+    stock: 999,
     description: "",
     images: [
       "/products/chilli-1.JPG",
@@ -59,7 +59,7 @@ const products: Product[] = [
     name: "Sour Dough",
     model: <Jar />,
     price: 0,
-    stock: 0,
+    stock: 999,
     description: "",
     images: [
       "/products/sourdough.JPG",
@@ -72,7 +72,7 @@ const products: Product[] = [
     name: "Pumpkin Bread",
     model: <Jar />,
     price: 0,
-    stock: 0,
+    stock: 999,
     description: "",
     images: ["/products/pumpkin-bread.JPG", "/products/pumpkin-bread-3.JPG"],
   },
@@ -81,7 +81,7 @@ const products: Product[] = [
     name: "Bread Roll",
     model: <Jar />,
     price: 0,
-    stock: 0,
+    stock: 999,
     description: "",
     images: [
       "/products/bread-roll.JPG",
@@ -95,7 +95,7 @@ const products: Product[] = [
     name: "Jollof Rice",
     model: <Jar />,
     price: 0,
-    stock: 0,
+    stock: 999,
     description: "",
     images: [
       "/products/jollof-1.JPG",
@@ -112,7 +112,6 @@ type MiscProduct = {
   tag?: string;
 };
 
-// TODO: get images for these
 const miscProducts: MiscProduct[] = [
   {
     title: "Pecans",
@@ -364,7 +363,7 @@ export default function Products() {
 
       {/* Misc products section */}
       <section className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-10 py-16">
-        <header className="mb-8 text-center">
+        <div className="mb-8 text-center">
           <h2 className="text-3xl sm:text-4xl font-bold text-white">
             Other goodies
           </h2>
@@ -372,7 +371,7 @@ export default function Products() {
             A few extra bits that come and go. Seasonal, small-batch, and always
             worth a look.
           </p>
-        </header>
+        </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {miscProducts.map((item) => (

@@ -13,7 +13,7 @@ export default function about_us() {
               alt="Yaa's Garden Kitchen Fresh Produce"
               width={450}
               height={350}
-              className="mt-4 rounded-md shadow-lg transition-transform duration-200 hover:animate-shake"
+              className="mt-4 rounded-md shadow-lg transition-transform duration-200"
             />
           </figure>
 
@@ -43,8 +43,8 @@ export default function about_us() {
               We&apos;re not just about food; we&apos;re about connecting people
               to the joy of homemade goodness. <br />
               <br />
-              Thank you for letting us bring a piece of our garden to your
-              table. 🌿✨
+              Thank you for letting us bring a piece of our garden to your table
+              :D!
             </p>
           </figcaption>
         </div>

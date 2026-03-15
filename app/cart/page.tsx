@@ -32,16 +32,10 @@ export default function Cart() {
   }
 
   return (
-    <main className="min-h-screen bg-[radial-gradient(circle,_#6DB86B,_#305230)] text-white">
+    <main className="min-h-screen bg-[radial-gradient(circle,_#6DB86B,_#305230)]">
       <Navbar />
 
       <section className="max-w-7xl mx-auto px-6 py-12">
-        {/* Header */}
-        {/* <div className="mb-10">
-          <h1 className="text-3xl font-semibold text-gray-900">Checkout</h1>
-          <p className="text-gray-500 mt-2">Complete your purchase below</p>
-        </div> */}
-
         {/* Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
           {/* LEFT SIDE - Forms */}
@@ -104,12 +98,12 @@ export default function Cart() {
               <div className="space-y-4">
                 <div className="border border-white/20 bg-white/5 rounded-2xl p-4 backdrop-blur-md flex items-center gap-3">
                   <input type="radio" name="payment" defaultChecked />
-                  <span>Credit / Debit Card</span>
+                  <span className="text-white">Credit / Debit Card</span>
                 </div>
 
                 <div className="border border-white/20 bg-white/5 rounded-2xl p-4 backdrop-blur-md flex items-center gap-3">
                   <input type="radio" name="payment" />
-                  <span>PayPal</span>
+                  <span className="text-white">PayPal</span>
                 </div>
 
                 <Input label="Card Number" placeholder="1234 5678 9012 3456" />

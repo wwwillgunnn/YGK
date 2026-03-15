@@ -4,13 +4,13 @@ import { Card } from "@/components/ui/card";
 // TODO: give this page real functionality
 export default function ProfilePage() {
   return (
-    <main className="min-h-screen bg-[radial-gradient(circle,_#6DB86B,_#305230)] text-white">
+    <main className="min-h-screen bg-[radial-gradient(circle,_#6DB86B,_#305230)]">
       <Navbar />
 
-      <section className="max-w-6xl mx-auto px-6 py-16">
+      <section className="max-w-6xl mx-auto px-6 py-6">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
           {/* LEFT - Profile Summary */}
-          <Card className="p-8 rounded-3xl border border-white/20 bg-white/10 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.2)] text-center">
+          <Card className="p-8 rounded-3xl border border-white/20 bg-white/10 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.2)] text-center text-white">
             {/* Avatar */}
             <div className="w-28 h-28 mx-auto rounded-full bg-white/20 border border-white/30 backdrop-blur-md flex items-center justify-center text-3xl font-semibold">
               JD
@@ -39,7 +39,7 @@ export default function ProfilePage() {
           {/* RIGHT - Editable Info */}
           <div className="lg:col-span-2 space-y-8">
             {/* Personal Info */}
-            <Card className="p-8 rounded-3xl border border-white/20 bg-white/10 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.2)]">
+            <Card className="p-8 rounded-3xl border border-white/20 bg-white/10 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.2)] text-white">
               <h3 className="text-lg font-semibold mb-6">
                 Personal Information
               </h3>
@@ -57,7 +57,7 @@ export default function ProfilePage() {
             </Card>
 
             {/* Address */}
-            <Card className="p-8 rounded-3xl border border-white/20 bg-white/10 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.2)]">
+            <Card className="p-8 rounded-3xl border border-white/20 bg-white/10 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.2)] text-white">
               <h3 className="text-lg font-semibold mb-6">Default Address</h3>
 
               <GlassInput

@@ -140,15 +140,15 @@ const vegetables = [
 export default function VegetableGalleryPage() {
   return (
     <section className="w-full px-6">
-      <header className="mb-12 text-center">
+      <div className="mb-12 text-center">
         <h1 className="text-2xl md:text-3xl lg:text-5xl font-bold mb-4">
           Vegetable Gallery
         </h1>
-        <p className="text-xs md:text-sm lg:text-lg text-neutral-200">
+        <p className="text-xs md:text-sm lg:text-lg text-white/80">
           Fresh from the backyard garden. Seasonal, home-grown, and picked at
           peak flavour.
         </p>
-      </header>
+      </div>
 
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
         {vegetables.map((veg, index) => (

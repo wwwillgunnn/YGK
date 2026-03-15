@@ -5,14 +5,14 @@ import { Button } from "./ui/button";
 export default function OtherProducts() {
   return (
     <section className="mx-auto w-full max-w-6xl px-6 py-20">
-      <header className="text-center">
+      <div className="text-center">
         <h2 className="text-3xl font-bold tracking-tight md:text-4xl lg:text-6xl">
           Other Products
         </h2>
         <p className="mx-auto mt-4 max-w-2xl text-base text-white/80 md:text-lg">
           Enjoy our fantastic curry paste with other things on the side
         </p>
-      </header>
+      </div>
 
       <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
         <ProductPreview
@@ -37,7 +37,10 @@ export default function OtherProducts() {
 
       <div className="mt-12 flex justify-center">
         <Link href="/products">
-          <Button size="lg" className="bg-[#422323] hover:bg-[#311818]">
+          <Button
+            size="lg"
+            className="bg-[#422323] hover:bg-[#311818] px-10 py-6"
+          >
             See All Products
           </Button>
         </Link>

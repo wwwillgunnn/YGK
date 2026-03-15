@@ -4,7 +4,7 @@ import TeamMember from "@/components/TeamMember";
 export default function Team() {
   return (
     <section className="mx-auto w-full max-w-6xl px-6 py-20 text-center">
-      <header className="space-y-4 mb-4">
+      <div className="space-y-4 mb-4">
         <h2 className="text-3xl font-bold tracking-tight md:text-4xl lg:text-6xl">
           Meet Our Team
         </h2>
@@ -12,7 +12,7 @@ export default function Team() {
           A small team growing fresh produce and turning it into bold, handmade
           flavour.
         </p>
-      </header>
+      </div>
 
       <FadeInStagger
         duration={1}
