@@ -1,9 +1,16 @@
 import { Product } from "@/data/products";
 
-export function addToCart(product: Product, quantity: number) {
-  const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+type CartItem = {
+  id: string;
+  name: string;
+  price: number;
+  quantity: number;
+};
 
-  const existing = cart.find((item: any) => item.id === product.id);
+export function addToCart(product: Product, quantity: number) {
+  const cart: CartItem[] = JSON.parse(localStorage.getItem("cart") || "[]");
+
+  const existing = cart.find((item) => item.id === product.id);
 
   if (existing) {
     existing.quantity += quantity;
