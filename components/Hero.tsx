@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useLayoutEffect } from "react";
+import { useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Button } from "@/components/ui/button";
@@ -8,96 +8,85 @@ import Jar from "@/components/assets/Jar";
 import Navbar from "@/components/Navbar";
 import Image from "next/image";
 
+gsap.registerPlugin(ScrollTrigger);
+
 export default function Hero() {
-  const jarRef = useRef(null);
+  const jarRef = useRef<HTMLDivElement | null>(null);
   const orchidOne = useRef<HTMLDivElement | null>(null);
   const orchidTwo = useRef<HTMLDivElement | null>(null);
 
-  // TODO: Work on all screen sizes
   useLayoutEffect(() => {
-    // Check if viewport is large enough
-    const checkViewport = () => {
-      if (window.innerWidth <= 1024) {
-        // Disable scroll animations if viewport is not large enough
-        ScrollTrigger.getAll().forEach((trigger) => trigger.kill()); // Kill all scroll triggers
-        return false; // Don't proceed with animations
-      }
-      return true;
-    };
+    const ctx = gsap.context(() => {
+      const mm = gsap.matchMedia();
 
-    if (!checkViewport()) return; // Exit if viewport is small
+      mm.add("(min-width: 1024px)", () => {
+        // Initial state
+        gsap.set(jarRef.current, { scale: 1.2 });
 
-    gsap.registerPlugin(ScrollTrigger);
+        const createTimeline = (
+          trigger: string,
+          jarAnim: gsap.TweenVars,
+          orchid: HTMLDivElement | null,
+          rotation: number,
+        ) => {
+          const tl = gsap.timeline({
+            scrollTrigger: {
+              trigger,
+              start: "top bottom",
+              end: "center center",
+              scrub: true,
+            },
+          });
 
-    gsap.to(jarRef.current, {
-      scale: 1.2,
-      markers: false,
+          tl.to(jarRef.current, jarAnim);
+
+          if (orchid) {
+            tl.to(
+              orchid,
+              {
+                rotation,
+                ease: "none",
+                transformOrigin: "50% 50%",
+              },
+              0,
+            );
+          }
+        };
+
+        createTimeline(
+          "#part1",
+          {
+            x: "-22vw",
+            y: "120vh",
+            rotation: 15,
+            scale: 1,
+          },
+          orchidOne.current,
+          90,
+        );
+
+        createTimeline(
+          "#part2",
+          {
+            x: "-22vw",
+            y: "230vh",
+            rotation: 0,
+            scale: 1,
+          },
+          orchidTwo.current,
+          -90,
+        );
+      });
     });
 
-    const tl1 = gsap.timeline({
-      scrollTrigger: {
-        trigger: "#part1",
-        start: "top-=100 bottom",
-        end: "center-=50 center",
-        scrub: true,
-        markers: false,
-        scroller: document.body,
-      },
-    });
-
-    // Position in the middle of the feature section
-    tl1.to(jarRef.current, {
-      x: "-22vw",
-      y: "120vh",
-      rotation: 15,
-      scale: 1,
-    });
-
-    tl1.to(
-      orchidOne.current,
-      {
-        rotation: 90,
-        ease: "none",
-        transformOrigin: "50% 50%",
-      },
-      0,
-    );
-
-    const tl2 = gsap.timeline({
-      scrollTrigger: {
-        trigger: "#part2",
-        start: "top bottom",
-        end: "center center",
-        scrub: true,
-        markers: false,
-        scroller: document.body,
-      },
-    });
-
-    // position around other 3D objects
-    tl2.to(jarRef.current, {
-      x: "-22vw",
-      y: "230vh",
-      rotation: 0,
-      scale: 1,
-    });
-
-    tl2.to(
-      orchidTwo.current,
-      {
-        rotation: -90,
-        ease: "none",
-        transformOrigin: "50% 50%",
-      },
-      0,
-    );
+    return () => ctx.revert();
   }, []);
 
   return (
     <article className="min-h-[80vh] w-full" id="top-viewport">
       <Navbar />
 
-      <section className="flex flex-col items-center justify-center mt-20 mx-10 -translate-y-20 translate-x-20 md:gap-10 lg:flex-row lg:mx-20 lg:mt-0">
+      <section className="flex flex-col gap-10 items-center justify-center mt-20 mx-10 -translate-y-20 lg:flex-row lg:mx-20 lg:mt-0 lg:-translate-y-20 lg:translate-x-20">
         <aside className="flex flex-col gap-8 text-center lg:p-10 lg:text-left">
           <div className="flex flex-col gap-2">
             <h1 className="text-3xl md:text-4xl lg:text-6xl 2xl:text-7xl font-bold">
@@ -109,14 +98,16 @@ export default function Hero() {
               it to create our delicious products. Taste the difference today!
             </p>
           </div>
+
           <div className="flex gap-4 items-center justify-center lg:justify-start">
             <Button
               variant="outline"
               size="lg"
-              className="h-16 border-[#422323] bg-transparent border-2 hover:bg-[#422323] text-[#422323] hover:text-white"
+              className="h-16 border-[#422323] border-2 bg-transparent hover:bg-[#422323] text-[#422323] hover:text-white"
             >
               Learn More
             </Button>
+
             <Button
               variant="default"
               size="lg"
@@ -128,18 +119,14 @@ export default function Hero() {
         </aside>
 
         <figure
-          className="w-full h-[50vh] z-10 -translate-x-20 md:h-[70vh] lg:w-[40vw] lg:h-[100vh]"
           ref={jarRef}
+          className="w-full h-[50vh] z-10 md:h-[70vh] lg:w-[40vw] lg:h-screen lg:-translate-x-20"
         >
           <Jar />
         </figure>
       </section>
 
-      {/* Orchid icon */}
-      <div
-        className="absolute top-[80%] -left-[400px] 10 opacity-10"
-        ref={orchidOne}
-      >
+      <div ref={orchidOne} className="absolute top-[80%] -left-100 opacity-10">
         <Image
           src="/brown-orchid-logo.svg"
           alt="YGK Logo"
@@ -149,8 +136,8 @@ export default function Hero() {
       </div>
 
       <div
-        className="absolute translate-y-[1400px] -right-[400px] 10 opacity-10"
         ref={orchidTwo}
+        className="absolute translate-y-[350%] -right-100 opacity-10"
       >
         <Image
           src="/brown-orchid-logo.svg"

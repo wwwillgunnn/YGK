@@ -11,8 +11,8 @@ export default function Home() {
   return (
     <SplashGate>
       <main
-        className="flex flex-col items-center gap-12 m-auto p-8 pt-0 top-0 z-0 overflow-x-hidden md:gap-32 md:p-20 md:pt-0
-        bg-[linear-gradient(to_bottom,_#569255_0%,_#6DB86B_10%,_#569255_30%,_#305230_85%,_#422323_100%)]"
+        className="flex flex-col items-center gap-12 md:gap-32 md:p-20 md:pt-0
+        bg-[linear-gradient(to_bottom,#569255_0%,#6DB86B_10%,#569255_30%,#305230_85%,#422323_100%)]"
       >
         <Hero />
         <Feature />

@@ -26,9 +26,9 @@ export default function Feature() {
       gsap.to(items, {
         opacity: 1,
         y: 0,
-        duration: 0.8,
+        duration: 0.5,
         ease: "power3.out",
-        stagger: 0.15,
+        stagger: 0.1,
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top 75%",

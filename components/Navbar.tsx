@@ -13,6 +13,7 @@ import {
   SheetTitle,
   SheetTrigger,
   SheetClose,
+  SheetDescription,
 } from "@/components/ui/sheet";
 
 const navLinks = [
@@ -44,6 +45,7 @@ export default function Navbar() {
               alt="YGK Logo"
               height={40}
               width={40}
+              loading="eager"
             />
           </Link>
 
@@ -96,11 +98,11 @@ export default function Navbar() {
                 </Button>
               </SheetTrigger>
 
-              <SheetContent side="right" className="text-black">
+              <SheetContent className="bg-[#1F3D2B] border-none">
                 <SheetHeader>
-                  <SheetTitle className="flex items-center gap-2">
+                  <SheetTitle className="flex items-center gap-2 ">
                     <Image
-                      src="/orchid.png"
+                      src="/white-orchid-logo.png"
                       alt="YGK Logo"
                       height={28}
                       width={28}
@@ -111,7 +113,7 @@ export default function Navbar() {
 
                 <div className="mt-6 flex flex-col gap-4">
                   {/* Nav links */}
-                  <div className="flex flex-col gap-3">
+                  <SheetDescription className="flex flex-col gap-3">
                     {navLinks.map((l) => {
                       const active = isActivePath(pathname, l.href);
 
@@ -120,10 +122,10 @@ export default function Navbar() {
                           <Link
                             href={l.href}
                             className={[
-                              "text-lg font-semibold",
+                              "text-lg font-semibold transition-colors",
                               active
-                                ? "text-[#422323]"
-                                : "hover:text-[#422323]",
+                                ? "text-white underline"
+                                : "text-white/80 hover:text-white",
                             ].join(" ")}
                             aria-current={active ? "page" : undefined}
                           >
@@ -132,21 +134,16 @@ export default function Navbar() {
                         </SheetClose>
                       );
                     })}
-                  </div>
+                  </SheetDescription>
 
-                  <div className="h-px w-full bg-border" />
+                  <div className="h-px w-full bg-white/20" />
 
-                  {/* Account + Bag links */}
+                  {/* Account + Cart */}
                   <div className="flex flex-col gap-3">
                     <SheetClose asChild>
                       <Link
                         href="/account"
-                        className={[
-                          "flex items-center gap-3 text-lg font-semibold",
-                          isActivePath(pathname, "/account")
-                            ? "text-[#422323]"
-                            : "hover:text-[#422323]",
-                        ].join(" ")}
+                        className="flex items-center gap-3 text-lg font-semibold text-white/80 hover:text-white"
                       >
                         <MdAccountCircle size={26} />
                         Account
@@ -156,12 +153,7 @@ export default function Navbar() {
                     <SheetClose asChild>
                       <Link
                         href="/cart"
-                        className={[
-                          "flex items-center gap-3 text-lg font-semibold",
-                          isActivePath(pathname, "/cart")
-                            ? "text-[#422323]"
-                            : "hover:text-[#422323]",
-                        ].join(" ")}
+                        className="flex items-center gap-3 text-lg font-semibold text-white/80 hover:text-white"
                       >
                         <MdShoppingCart size={26} />
                         Cart

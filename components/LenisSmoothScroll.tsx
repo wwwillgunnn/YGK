@@ -24,7 +24,7 @@ export default function LenisSmoothScroll() {
 
     lenis.on("scroll", ScrollTrigger.update);
 
-    ScrollTrigger.scrollerProxy(document.body, {
+    ScrollTrigger.scrollerProxy(document.documentElement, {
       scrollTop(value) {
         if (typeof value === "number") {
           lenis.scrollTo(value);
@@ -40,6 +40,11 @@ export default function LenisSmoothScroll() {
           height: window.innerHeight,
         };
       },
+      pinType: document.documentElement.style.transform ? "transform" : "fixed",
+    });
+
+    ScrollTrigger.defaults({
+      scroller: document.documentElement,
     });
 
     ScrollTrigger.refresh();

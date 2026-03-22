@@ -19,7 +19,6 @@ export default function SplashGate({
     const prevOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
 
-    // Fake progress that creeps forward while loading
     const interval = setInterval(() => {
       setProgress((p) => Math.min(p + Math.random() * 8, 95));
     }, 120);
@@ -48,9 +47,9 @@ export default function SplashGate({
       {children}
 
       <div
-        className="fixed inset-0 z-[9999] flex items-center justify-center
-        bg-[linear-gradient(to_bottom,_#6DB86B_0%,_#569255_50%,_#305230_100%)]
-        transition-opacity"
+        className={`fixed inset-0 z-[9999] flex flex-col items-center justify-center 
+                    bg-gradient-to-b from-[#6DB86B] via-[#569255] to-[#305230] 
+                    transition-opacity`}
         style={{
           opacity: done ? 0 : 1,
           pointerEvents: done ? "none" : "auto",
@@ -58,16 +57,15 @@ export default function SplashGate({
         }}
         aria-hidden={done}
       >
-        <div className="w-80 max-w-96 text-center">
-          <div className="mb-5 flex justify-center">
-            <Image
-              src="/white-orchid-logo.png"
-              alt="Orchid"
-              width={80}
-              height={80}
-              priority
-            />
-          </div>
+        <div className="w-80 max-w-sm text-center">
+          <Image
+            src="/white-orchid-logo.png"
+            alt="Orchid"
+            width={80}
+            height={80}
+            priority
+            className="mx-auto mb-5"
+          />
 
           <p className="text-white/90 text-sm mb-3">Loading the experience…</p>
 
