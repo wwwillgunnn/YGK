@@ -2,7 +2,7 @@ import Card from "@/components/Card";
 
 export default function gallery() {
   return (
-    <div className="flex flex-wrap flex-col lg:flex-row gap-20 px-10 lg:px-20 pb-10">
+    <div className="flex flex-wrap flex-col gap-5 px-10 pb-10 lg:gap-20 lg:flex-row lg:px-20">
       <Card
         name="Fruit"
         link="gallery/fruit"

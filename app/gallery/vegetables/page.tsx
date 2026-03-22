@@ -139,7 +139,7 @@ const vegetables = [
 
 export default function VegetableGalleryPage() {
   return (
-    <section className="w-full px-6">
+    <section className="w-full px-6 pb-6">
       <div className="mb-12 text-center">
         <h1 className="text-2xl md:text-3xl lg:text-5xl font-bold mb-4">
           Vegetable Gallery
